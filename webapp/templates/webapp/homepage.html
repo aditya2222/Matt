@@ -1,9 +1,13 @@
 {% extends "base.html" %}
 
+
 {% block content %}
-	<form method="post">
-		{% csrf_token %}
-		{{form.as_p}}
-		<button type="Submit">Submit</button>
-	</form>
+	<div class="container jumbtron">
+	<h1 class="alert alert-success">
+		Kindly head over to the (curenturl)/admin to access the dashboard!
+	</h1>		
+	</div>
+
+
+	
 {% endblock content %}
