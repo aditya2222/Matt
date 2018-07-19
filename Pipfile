@@ -13,6 +13,7 @@ pyexcel-xls = "*"
 whitenoise = "*"
 python-decouple = "*"
 dj-database-url = "*"
+gunicorn = "*"
 
 [dev-packages]
 

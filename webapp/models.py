@@ -1856,3 +1856,8 @@ class SpreadSheet20(models.Model):
 
     def __str__(self):
         return str(self.clr)
+
+
+
+
+
