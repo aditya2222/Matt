@@ -1,14 +1,9 @@
 {% extends "base.html" %}
 
-
 {% block content %}
-
-
-    <h1>Worksheet Title: {{ spreadSheetTitle }}</h1>
-    <h2>SpreadSheetContents</h2>
-
-
-
-
-
-{% endblock %}
+	<form method="post">
+		{% csrf_token %}
+		{{form.as_p}}
+		<button type="Submit">Submit</button>
+	</form>
+{% endblock content %}

@@ -7,6 +7,9 @@ name = "pypi"
 django = "*"
 "psycopg2" = "*"
 django-import-export = "*"
+django-excel = "*"
+pyexcel-xlsx = "*"
+pyexcel-xls = "*"
 
 [dev-packages]
 
