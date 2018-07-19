@@ -10,6 +10,9 @@ django-import-export = "*"
 django-excel = "*"
 pyexcel-xlsx = "*"
 pyexcel-xls = "*"
+whitenoise = "*"
+python-decouple = "*"
+dj-database-url = "*"
 
 [dev-packages]
 
