@@ -76,18 +76,19 @@ TEMPLATES = [
 WSGI_APPLICATION = 'Matt.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/2.0/ref/settings/#databases
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'myproject',
-#         'USER': 'myprojectuser',
-#         'PASSWORD': 'password',
-#         'HOST': 'localhost',
-#         'PORT': '',
-#     }
+#Database
+#https://docs.djangoproject.com/en/2.0/ref/settings/#databases
+#
+#DATABASES = {
+# 'default': {
+#     'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#     'NAME': 'db5id5vjjq084f',
+#     'USER': 'zafqawdnzzkkum',
+#     'PASSWORD': '7c2c87f699c0401cc0adc321f813245a439882cdca3655cd094844935cd58aea',
+#     'HOST': 'ec2-50-16-241-91.compute-1.amazonaws.com',
+#     'PORT': '5432',
 # }
+#}
 #DATABASES = {
 #    'default': {
 #        'ENGINE': 'django.db.backends.sqlite3',
@@ -98,9 +99,13 @@ WSGI_APPLICATION = 'Matt.wsgi.application'
 import  dj_database_url
 DATABASES = {
     'default': dj_database_url.config(
-        default='postgres://buxfvoammpkwne:02f103c76456baf941d3c93c0ca7ecec2cd2cf32e802a2d795aa2559883c9cd5@ec2-50-16-241-91.compute-1.amazonaws.com:5432/db5id5vjjq084f'
+        default='postgres://zafqawdnzzkkum:7c2c87f699c0401cc0adc321f813245a439882cdca3655cd094844935cd58aea@ec2-50-16-241-91.compute-1.amazonaws.com:5432/db5id5vjjq084f'
     )
 }
+
+
+
+
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
 
