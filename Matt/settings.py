@@ -12,10 +12,8 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 
 import os
 
-
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
@@ -27,7 +25,6 @@ SECRET_KEY = '3=!!o61wwl9dh5trfjq3(%*vj_2#spzi-l@-zcf6u=%9iz=b8y'
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
-
 
 # Application definition
 
@@ -41,8 +38,6 @@ INSTALLED_APPS = [
     'webapp',
     'import_export',
 ]
-
-
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -75,9 +70,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'Matt.wsgi.application'
 
-
-#Database
-#https://docs.djangoproject.com/en/2.0/ref/settings/#databases
+# Database
+# https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
 
 # DATABASES = {
@@ -87,24 +81,24 @@ WSGI_APPLICATION = 'Matt.wsgi.application'
 #     }
 # }
 
-# import  dj_database_url
-# DATABASES = {
-#    'default': dj_database_url.config(
-#        default='postgres://zafqawdnzzkkum:7c2c87f699c0401cc0adc321f813245a439882cdca3655cd094844935cd58aea@ec2-50-16-241-91.compute-1.amazonaws.com:5432/db5id5vjjq084f'
-#    )
-# }
+import dj_database_url
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'myproject',
-        'USER': 'myprojectuser',
-        'PASSWORD': 'password',
-        'HOST': 'localhost',
-        'PORT': '',
-    }
+    'default': dj_database_url.config(
+        default='postgres://zafqawdnzzkkum:7c2c87f699c0401cc0adc321f813245a439882cdca3655cd094844935cd58aea@ec2-50-16-241-91.compute-1.amazonaws.com:5432/db5id5vjjq084f'
+    )
 }
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'myproject',
+#         'USER': 'myprojectuser',
+#         'PASSWORD': 'password',
+#         'HOST': 'localhost',
+#         'PORT': '',
+#     }
+# }
 
 
 # Password validation
@@ -125,7 +119,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
 
@@ -139,23 +132,13 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
-STATIC_ROOT = os.path.join(BASE_DIR,'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 STATIC_URL = '/static/'
 
-
-STATICFILES_DIRS = (os.path.join(BASE_DIR,'staticfiles'),)
-
-
-
-
-
-
-
-
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'staticfiles'),)
