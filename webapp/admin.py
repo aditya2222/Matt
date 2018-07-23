@@ -15,7 +15,7 @@ class SpreadSheetResource(resources.ModelResource):
         report_unchanged = True
         exclude = ('id',)
         import_id_fields = ('consumed', 'spread', 'percentage_of_available_funds', 'rand_loan_amount', 'rand_term',
-                            'rand_rate', 'btc_usd_price', 'eth_usd_price', 'btc_eth_price', 'demand', 'date')
+                            'rand_rate', 'btc_usd_price', 'eth_usd_price', 'btc_eth_price', 'demand', 'date',)
 
 
 # Register your models here.
@@ -31,7 +31,7 @@ class SpreadSheet2Resource(resources.ModelResource):
         report_unchanged = True
         exclude = ('id',)
         import_id_fields = ('consumed', 'spread', 'percentage_of_available_funds', 'rand_loan_amount', 'rand_term',
-                            'rand_rate', 'btc_usd_price', 'eth_usd_price', 'btc_eth_price', 'demand')
+                            'rand_rate', 'btc_usd_price', 'eth_usd_price', 'btc_eth_price', 'demand', 'date')
 
 
 # Register your models here.
@@ -47,7 +47,7 @@ class SpreadSheet3Resource(resources.ModelResource):
         report_unchanged = True
         exclude = ('id',)
         import_id_fields = ('consumed', 'spread', 'percentage_of_available_funds', 'rand_loan_amount', 'rand_term',
-                            'rand_rate', 'btc_usd_price', 'eth_usd_price', 'btc_eth_price', 'demand')
+                            'rand_rate', 'btc_usd_price', 'eth_usd_price', 'btc_eth_price', 'demand', 'date')
 
 
 # Register your models here.
@@ -63,7 +63,7 @@ class SpreadSheet4Resource(resources.ModelResource):
         report_unchanged = True
         exclude = ('id',)
         import_id_fields = ('consumed', 'spread', 'percentage_of_available_funds', 'rand_loan_amount', 'rand_term',
-                            'rand_rate', 'btc_usd_price', 'eth_usd_price', 'btc_eth_price', 'demand')
+                            'rand_rate', 'btc_usd_price', 'eth_usd_price', 'btc_eth_price', 'demand', 'date')
 
 
 # Register your models here.
@@ -79,7 +79,7 @@ class SpreadSheet5Resource(resources.ModelResource):
         report_unchanged = True
         exclude = ('id',)
         import_id_fields = ('consumed', 'spread', 'percentage_of_available_funds', 'rand_loan_amount', 'rand_term',
-                            'rand_rate', 'btc_usd_price', 'eth_usd_price', 'btc_eth_price', 'demand')
+                            'rand_rate', 'btc_usd_price', 'eth_usd_price', 'btc_eth_price', 'demand', 'date')
 
 
 # Register your models here.
@@ -95,7 +95,7 @@ class SpreadSheet6Resource(resources.ModelResource):
         report_unchanged = True
         exclude = ('id',)
         import_id_fields = ('consumed', 'spread', 'percentage_of_available_funds', 'rand_loan_amount', 'rand_term',
-                            'rand_rate', 'btc_usd_price', 'eth_usd_price', 'btc_eth_price', 'demand')
+                            'rand_rate', 'btc_usd_price', 'eth_usd_price', 'btc_eth_price', 'demand', 'date')
 
 
 # Register your models here.
@@ -111,7 +111,7 @@ class SpreadSheet7Resource(resources.ModelResource):
         report_unchanged = True
         exclude = ('id',)
         import_id_fields = ('consumed', 'spread', 'percentage_of_available_funds', 'rand_loan_amount', 'rand_term',
-                            'rand_rate', 'btc_usd_price', 'eth_usd_price', 'btc_eth_price', 'demand')
+                            'rand_rate', 'btc_usd_price', 'eth_usd_price', 'btc_eth_price', 'demand', 'date')
 
 
 # Register your models here.
@@ -127,7 +127,7 @@ class SpreadSheet8Resource(resources.ModelResource):
         report_unchanged = True
         exclude = ('id',)
         import_id_fields = ('consumed', 'spread', 'percentage_of_available_funds', 'rand_loan_amount', 'rand_term',
-                            'rand_rate', 'btc_usd_price', 'eth_usd_price', 'btc_eth_price', 'demand')
+                            'rand_rate', 'btc_usd_price', 'eth_usd_price', 'btc_eth_price', 'demand', 'date')
 
 
 # Register your models here.
@@ -143,7 +143,7 @@ class SpreadSheet9Resource(resources.ModelResource):
         report_unchanged = True
         exclude = ('id',)
         import_id_fields = ('consumed', 'spread', 'percentage_of_available_funds', 'rand_loan_amount', 'rand_term',
-                            'rand_rate', 'btc_usd_price', 'eth_usd_price', 'btc_eth_price', 'demand')
+                            'rand_rate', 'btc_usd_price', 'eth_usd_price', 'btc_eth_price', 'demand', 'date')
 
 
 # Register your models here.
@@ -159,7 +159,7 @@ class SpreadSheet10Resource(resources.ModelResource):
         report_unchanged = True
         exclude = ('id',)
         import_id_fields = ('consumed', 'spread', 'percentage_of_available_funds', 'rand_loan_amount', 'rand_term',
-                            'rand_rate', 'btc_usd_price', 'eth_usd_price', 'btc_eth_price', 'demand')
+                            'rand_rate', 'btc_usd_price', 'eth_usd_price', 'btc_eth_price', 'demand', 'date')
 
 
 # Register your models here.
@@ -175,7 +175,7 @@ class SpreadSheet11Resource(resources.ModelResource):
         report_unchanged = True
         exclude = ('id',)
         import_id_fields = ('consumed', 'spread', 'percentage_of_available_funds', 'rand_loan_amount', 'rand_term',
-                            'rand_rate', 'btc_usd_price', 'eth_usd_price', 'btc_eth_price', 'demand')
+                            'rand_rate', 'btc_usd_price', 'eth_usd_price', 'btc_eth_price', 'demand', 'date')
 
 
 # Register your models here.
@@ -191,7 +191,7 @@ class SpreadSheet12Resource(resources.ModelResource):
         report_unchanged = True
         exclude = ('id',)
         import_id_fields = ('consumed', 'spread', 'percentage_of_available_funds', 'rand_loan_amount', 'rand_term',
-                            'rand_rate', 'btc_usd_price', 'eth_usd_price', 'btc_eth_price', 'demand')
+                            'rand_rate', 'btc_usd_price', 'eth_usd_price', 'btc_eth_price', 'demand', 'date')
 
 
 # Register your models here.
@@ -207,7 +207,7 @@ class SpreadSheet13Resource(resources.ModelResource):
         report_unchanged = True
         exclude = ('id',)
         import_id_fields = ('consumed', 'spread', 'percentage_of_available_funds', 'rand_loan_amount', 'rand_term',
-                            'rand_rate', 'btc_usd_price', 'eth_usd_price', 'btc_eth_price', 'demand')
+                            'rand_rate', 'btc_usd_price', 'eth_usd_price', 'btc_eth_price', 'demand', 'date')
 
 
 # Register your models here.
@@ -223,7 +223,7 @@ class SpreadSheet14Resource(resources.ModelResource):
         report_unchanged = True
         exclude = ('id',)
         import_id_fields = ('consumed', 'spread', 'percentage_of_available_funds', 'rand_loan_amount', 'rand_term',
-                            'rand_rate', 'btc_usd_price', 'eth_usd_price', 'btc_eth_price', 'demand')
+                            'rand_rate', 'btc_usd_price', 'eth_usd_price', 'btc_eth_price', 'demand', 'date')
 
 
 # Register your models here.
@@ -239,7 +239,7 @@ class SpreadSheet15Resource(resources.ModelResource):
         report_unchanged = True
         exclude = ('id',)
         import_id_fields = ('consumed', 'spread', 'percentage_of_available_funds', 'rand_loan_amount', 'rand_term',
-                            'rand_rate', 'btc_usd_price', 'eth_usd_price', 'btc_eth_price', 'demand')
+                            'rand_rate', 'btc_usd_price', 'eth_usd_price', 'btc_eth_price', 'demand', 'date')
 
 
 # Register your models here.
@@ -255,7 +255,7 @@ class SpreadSheet16Resource(resources.ModelResource):
         report_unchanged = True
         exclude = ('id',)
         import_id_fields = ('consumed', 'spread', 'percentage_of_available_funds', 'rand_loan_amount', 'rand_term',
-                            'rand_rate', 'btc_usd_price', 'eth_usd_price', 'btc_eth_price', 'demand')
+                            'rand_rate', 'btc_usd_price', 'eth_usd_price', 'btc_eth_price', 'demand', 'date')
 
 
 # Register your models here.
@@ -271,7 +271,7 @@ class SpreadSheet17Resource(resources.ModelResource):
         report_unchanged = True
         exclude = ('id',)
         import_id_fields = ('consumed', 'spread', 'percentage_of_available_funds', 'rand_loan_amount', 'rand_term',
-                            'rand_rate', 'btc_usd_price', 'eth_usd_price', 'btc_eth_price', 'demand')
+                            'rand_rate', 'btc_usd_price', 'eth_usd_price', 'btc_eth_price', 'demand', 'date')
 
 
 # Register your models here.
@@ -287,7 +287,7 @@ class SpreadSheet18Resource(resources.ModelResource):
         report_unchanged = True
         exclude = ('id',)
         import_id_fields = ('consumed', 'spread', 'percentage_of_available_funds', 'rand_loan_amount', 'rand_term',
-                            'rand_rate', 'btc_usd_price', 'eth_usd_price', 'btc_eth_price', 'demand')
+                            'rand_rate', 'btc_usd_price', 'eth_usd_price', 'btc_eth_price', 'demand', 'date')
 
 
 # Register your models here.
@@ -303,7 +303,7 @@ class SpreadSheet19Resource(resources.ModelResource):
         report_unchanged = True
         exclude = ('id',)
         import_id_fields = ('consumed', 'spread', 'percentage_of_available_funds', 'rand_loan_amount', 'rand_term',
-                            'rand_rate', 'btc_usd_price', 'eth_usd_price', 'btc_eth_price', 'demand')
+                            'rand_rate', 'btc_usd_price', 'eth_usd_price', 'btc_eth_price', 'demand', 'date')
 
 
 # Register your models here.
@@ -319,7 +319,7 @@ class SpreadSheet20Resource(resources.ModelResource):
         report_unchanged = True
         exclude = ('id',)
         import_id_fields = ('consumed', 'spread', 'percentage_of_available_funds', 'rand_loan_amount', 'rand_term',
-                            'rand_rate', 'btc_usd_price', 'eth_usd_price', 'btc_eth_price', 'demand')
+                            'rand_rate', 'btc_usd_price', 'eth_usd_price', 'btc_eth_price', 'demand', 'date')
 
 
 # Register your models here.
