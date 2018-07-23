@@ -15,7 +15,7 @@ class SpreadSheetResource(resources.ModelResource):
         report_unchanged = True
         exclude = ('id',)
         import_id_fields = ('consumed', 'spread', 'percentage_of_available_funds', 'rand_loan_amount', 'rand_term',
-                            'rand_rate', 'btc_usd_price', 'eth_usd_price', 'btc_eth_price', 'demand', 'date',,)
+                            'rand_rate', 'btc_usd_price', 'eth_usd_price', 'btc_eth_price', 'demand', 'date',)
 
 
 # Register your models here.
