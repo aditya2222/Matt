@@ -95,7 +95,7 @@ class SpreadSheet1(models.Model):
         blank=True, null=True)
     good_bad = models.FloatField(
         blank=True, null=True)
-    date = models.CharField(max_length=120, blank=True, null=True)
+    date = models.DateTimeField(max_length=120,blank=True, null=True)
 
     def __str__(self):
         return str(self.clr)
@@ -188,7 +188,7 @@ class SpreadSheet2(models.Model):
         blank=True, null=True)
     good_bad = models.FloatField(
         blank=True, null=True)
-    date = models.CharField(max_length=120, blank=True, null=True)
+    date = models.DateTimeField(max_length=120,blank=True, null=True)
 
     def __str__(self):
         return str(self.clr)
@@ -281,7 +281,7 @@ class SpreadSheet3(models.Model):
         blank=True, null=True)
     good_bad = models.FloatField(
         blank=True, null=True)
-    date = models.CharField(max_length=120, blank=True, null=True)
+    date = models.DateTimeField(max_length=120,blank=True, null=True)
 
     def __str__(self):
         return str(self.clr)
@@ -374,7 +374,7 @@ class SpreadSheet4(models.Model):
         blank=True, null=True)
     good_bad = models.FloatField(
         blank=True, null=True)
-    date = models.CharField(max_length=120, blank=True, null=True)
+    date = models.DateTimeField(max_length=120,blank=True, null=True)
 
     def __str__(self):
         return str(self.clr)
@@ -467,7 +467,7 @@ class SpreadSheet5(models.Model):
         blank=True, null=True)
     good_bad = models.FloatField(
         blank=True, null=True)
-    date = models.CharField(max_length=120, blank=True, null=True)
+    date = models.DateTimeField(max_length=120,blank=True, null=True)
 
     def __str__(self):
         return str(self.clr)
@@ -560,7 +560,7 @@ class SpreadSheet6(models.Model):
         blank=True, null=True)
     good_bad = models.FloatField(
         blank=True, null=True)
-    date = models.CharField(max_length=120, blank=True, null=True)
+    date = models.DateTimeField(max_length=120,blank=True, null=True)
 
     def __str__(self):
         return str(self.clr)
@@ -653,7 +653,7 @@ class SpreadSheet7(models.Model):
         blank=True, null=True)
     good_bad = models.FloatField(
         blank=True, null=True)
-    date = models.CharField(max_length=120, blank=True, null=True)
+    date = models.DateTimeField(max_length=120,blank=True, null=True)
 
     def __str__(self):
         return str(self.clr)
@@ -746,7 +746,7 @@ class SpreadSheet8(models.Model):
         blank=True, null=True)
     good_bad = models.FloatField(
         blank=True, null=True)
-    date = models.CharField(max_length=120, blank=True, null=True)
+    date = models.DateTimeField(max_length=120,blank=True, null=True)
 
     def __str__(self):
         return str(self.clr)
@@ -839,7 +839,7 @@ class SpreadSheet9(models.Model):
         blank=True, null=True)
     good_bad = models.FloatField(
         blank=True, null=True)
-    date = models.CharField(max_length=120, blank=True, null=True)
+    date = models.DateTimeField(max_length=120,blank=True, null=True)
 
     def __str__(self):
         return str(self.clr)
@@ -932,7 +932,7 @@ class SpreadSheet10(models.Model):
         blank=True, null=True)
     good_bad = models.FloatField(
         blank=True, null=True)
-    date = models.CharField(max_length=120, blank=True, null=True)
+    date = models.DateTimeField(max_length=120,blank=True, null=True)
 
     def __str__(self):
         return str(self.clr)
@@ -1028,7 +1028,7 @@ class SpreadSheet11(models.Model):
         blank=True, null=True)
     good_bad = models.FloatField(
         blank=True, null=True)
-    date = models.CharField(max_length=120, blank=True, null=True)
+    date = models.DateTimeField(max_length=120,blank=True, null=True)
 
     def __str__(self):
         return str(self.clr)
@@ -1121,7 +1121,7 @@ class SpreadSheet12(models.Model):
         blank=True, null=True)
     good_bad = models.FloatField(
         blank=True, null=True)
-    date = models.CharField(max_length=120, blank=True, null=True)
+    date = models.DateTimeField(max_length=120,blank=True, null=True)
 
     def __str__(self):
         return str(self.clr)
@@ -1214,7 +1214,7 @@ class SpreadSheet13(models.Model):
         blank=True, null=True)
     good_bad = models.FloatField(
         blank=True, null=True)
-    date = models.CharField(max_length=120, blank=True, null=True)
+    date = models.DateTimeField(max_length=120,blank=True, null=True)
 
     def __str__(self):
         return str(self.clr)
@@ -1307,7 +1307,7 @@ class SpreadSheet14(models.Model):
         blank=True, null=True)
     good_bad = models.FloatField(
         blank=True, null=True)
-    date = models.CharField(max_length=120, blank=True, null=True)
+    date = models.DateTimeField(max_length=120,blank=True, null=True)
 
     def __str__(self):
         return str(self.clr)
@@ -1400,7 +1400,7 @@ class SpreadSheet15(models.Model):
         blank=True, null=True)
     good_bad = models.FloatField(
         blank=True, null=True)
-    date = models.CharField(max_length=120, blank=True, null=True)
+    date = models.DateTimeField(max_length=120,blank=True, null=True)
 
     def __str__(self):
         return str(self.clr)
@@ -1493,7 +1493,7 @@ class SpreadSheet16(models.Model):
         blank=True, null=True)
     good_bad = models.FloatField(
         blank=True, null=True)
-    date = models.CharField(max_length=120, blank=True, null=True)
+    date = models.DateTimeField(max_length=120,blank=True, null=True)
 
     def __str__(self):
         return str(self.clr)
@@ -1586,7 +1586,7 @@ class SpreadSheet17(models.Model):
         blank=True, null=True)
     good_bad = models.FloatField(
         blank=True, null=True)
-    date = models.CharField(max_length=120, blank=True, null=True)
+    date = models.DateTimeField(max_length=120,blank=True, null=True)
 
     def __str__(self):
         return str(self.clr)
@@ -1679,7 +1679,7 @@ class SpreadSheet18(models.Model):
         blank=True, null=True)
     good_bad = models.FloatField(
         blank=True, null=True)
-    date = models.CharField(max_length=120, blank=True, null=True)
+    date = models.DateTimeField(max_length=120,blank=True, null=True)
 
     def __str__(self):
         return str(self.clr)
@@ -1772,7 +1772,7 @@ class SpreadSheet19(models.Model):
         blank=True, null=True)
     good_bad = models.FloatField(
         blank=True, null=True)
-    date = models.CharField(max_length=120, blank=True, null=True)
+    date = models.DateTimeField(max_length=120,blank=True, null=True)
 
     def __str__(self):
         return str(self.clr)
@@ -1865,7 +1865,7 @@ class SpreadSheet20(models.Model):
         blank=True, null=True)
     good_bad = models.FloatField(
         blank=True, null=True)
-    date = models.CharField(max_length=120, blank=True, null=True)
+    date = models.DateTimeField(max_length=120,blank=True, null=True)
 
     def __str__(self):
         return str(self.clr)
