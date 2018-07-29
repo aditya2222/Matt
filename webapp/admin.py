@@ -21,6 +21,7 @@ class SpreadSheetResource(resources.ModelResource):
 # Register your models here.
 @admin.register(SpreadSheet1)
 class SpreadSheet1Admin(ImportExportModelAdmin):
+    list_display = ['id']
     resource_class = SpreadSheetResource
 
 

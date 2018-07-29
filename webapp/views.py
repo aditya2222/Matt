@@ -1,8 +1,10 @@
 from django.shortcuts import render
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, DetailView
 # Include the `fusioncharts.py` file which has required functions to embed the charts in html page
 from .fusioncharts import FusionCharts
 from .models import *
+from datetime import timedelta
+from django.db.models import Q
 
 
 # Create your views here.
@@ -71,3 +73,35 @@ def get_loan(request):
     }
 
     return render(request, 'webapp/charts.html', data)
+
+
+class PlotLoan(DetailView):
+    template_name = 'webapp/charts.html'
+    model = SpreadSheet1
+
+    def get_context_data(self, **kwargs):
+        newlist = []
+        exact_date = self.object.date.date()
+        # clr_queryset = SpreadSheet1.objects.filter(
+        #     date__range=[str(self.object.date.date()), str(self.object.date.date() + timedelta(days=7))]).values('clr')
+        clr_queryset = SpreadSheet1.objects.filter(
+            Q(date__range=[str(exact_date - timedelta(days=14)), str(exact_date)]) |
+            Q(date__day=exact_date.day, date__month=exact_date.month, date__year=exact_date.year) |
+            Q(date__range=[str(exact_date), str(exact_date + timedelta(days=14))])
+
+        ).values(
+            'clr')
+
+        for i in clr_queryset:
+            newlist.append(i['clr'])
+
+        context = super(PlotLoan, self).get_context_data(**kwargs)
+        context['date'] = SpreadSheet1.objects.filter(
+            Q(date__range=[str(exact_date - timedelta(days=14)), str(exact_date)]) |
+            Q(date__day=exact_date.day, date__month=exact_date.month, date__year=exact_date.year) |
+            Q(date__range=[str(exact_date), str(exact_date + timedelta(days=14))])
+        )
+        context['clr'] = newlist
+        print(exact_date)
+        context['custom_date'] = exact_date
+        return context

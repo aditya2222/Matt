@@ -15,10 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from webapp.views import HomeView, chart, get_loan
+from webapp.views import HomeView, chart, get_loan, PlotLoan
 
 urlpatterns = [
-    path('', get_loan, name='loan'),
+    path('plot/<int:pk>', PlotLoan.as_view(), name='loan'),
     path('data/', chart, name='charts'),
     path('admin/', admin.site.urls),
 
