@@ -6,33 +6,58 @@
 </head>
 <body>
 <div id="container"></div>
-<script src="https://code.highcharts.com/highcharts.src.js"></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+
+<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+
+
 <script>
+
+
     Highcharts.chart('container', {
         chart: {
             type: 'column'
         },
         title: {
-            text: 'Historic World Population by Region'
+            text: 'Monthly Average Temperature'
+        },
+        subtitle: {
+            text: 'Source: WorldClimate.com'
         },
         xAxis: {
-            categories: [
-                {% for datum in date %}
-                    '{{ datum }}',
-                {% endfor %}
-
+            categories: [{% for foo in date %}
+                '{{ foo }}',
+            {% endfor %}
             ]
+        },
+        yAxis: {
+            title: {
+                text: 'CLR'
+            }
+        },
+        plotOptions: {
+            line: {
+                dataLabels: {
+                    enabled: true
+                },
+                enableMouseTracking: false
+            }
         },
         series: [{
-            name: 'One Week Data',
-            data: [
-                {% for foo in clr %}
-                    {{ foo }},
-                {% endfor %}
-
+            name: 'CLR',
+            data: [{% for foo in clr %}
+                {{ foo }},
+            {% endfor %}
             ]
-        },
-        ]
+        }, {
+            name: 'Loan',
+            data: [{% for loan in loan %}
+                {{ loan }},
+            {% endfor %}
+            ]
+        }]
     });
 </script>
 </body>

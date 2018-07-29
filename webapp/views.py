@@ -56,12 +56,17 @@ def chart(request):
 
 def get_loan(request):
     newlist = []
+    loanlist = []
     clr_queryset = SpreadSheet1.objects.filter(date__range=["2018-07-11", '2018-07-12']).values('clr')
+    loan_queryset = SpreadSheet1.objects.filter(date__range=["2018-07-11", '2018-07-12']).values('rand_rate')
     for i in clr_queryset:
         newlist.append(i['clr'])
+    for j in loan_queryset:
+        loanlist.append(j['rand_rate'])
     data = {
         "date": SpreadSheet1.objects.filter(date__range=["2018-07-11", '2018-07-12']),
-        "clr": newlist
+        "clr": newlist,
+        "loan": loanlist
 
     }
 
