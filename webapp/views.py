@@ -1,10 +1,9 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView
-from django.http import JsonResponse
-from django.http import HttpResponse
 # Include the `fusioncharts.py` file which has required functions to embed the charts in html page
 from .fusioncharts import FusionCharts
 from .models import *
+
 
 # Create your views here.
 
@@ -12,8 +11,9 @@ from .models import *
 class HomeView(TemplateView):
     template_name = 'webapp/charts.html'
 
-  # The `chart` function is defined to load chart from a SQLite database. At first, data is retrived
-  # from the SQLite database. This data is used to create chart data.
+
+# The `chart` function is defined to load chart from a SQLite database. At first, data is retrived
+# from the SQLite database. This data is used to create chart data.
 
 
 def chart(request):
@@ -34,7 +34,7 @@ def chart(request):
         "divlineColor": "#999999",
         "divLineIsDashed": "1",
         "showAlternateHGridColor": "0",
-        "showlabels":"1",
+        "showlabels": "1",
     }
 
     dataSource['data'] = []
@@ -52,3 +52,17 @@ def chart(request):
                             "400", "chart-1", "json", dataSource)
     # returning complete JavaScript and HTML code, which is used to generate chart in the browsers.
     return render(request, 'webapp/fusioncharts-html-template.html', {'output': column2D.render()})
+
+
+def get_loan(request):
+    newlist = []
+    clr_queryset = SpreadSheet1.objects.filter(date__range=["2018-07-11", '2018-07-12']).values('clr')
+    for i in clr_queryset:
+        newlist.append(i['clr'])
+    data = {
+        "date": SpreadSheet1.objects.filter(date__range=["2018-07-11", '2018-07-12']),
+        "clr": newlist
+
+    }
+
+    return render(request, 'webapp/charts.html', data)
