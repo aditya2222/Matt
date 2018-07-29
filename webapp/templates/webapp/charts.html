@@ -49,7 +49,7 @@
 
     Highcharts.chart('container', {
         chart: {
-            type: 'column'
+            type: 'line'
         },
         title: {
             text: 'Monthly Average Temperature'
@@ -59,7 +59,7 @@
         },
         xAxis: {
             categories: [{% for foo in date %}
-                "{{ foo }}",
+                "{{ foo.date.date }} {{ foo.date.time }} ",
             {% endfor %}
             ]
         },
@@ -71,9 +71,9 @@
         plotOptions: {
             line: {
                 dataLabels: {
-                    enabled: true
+                    enabled: false
                 },
-                enableMouseTracking: false
+                enableMouseTracking: true
             }
         },
         series: [{
@@ -86,9 +86,9 @@
             name: 'Loan',
             data: [
                 {% for foo in date %}
-                    {% if custom_date == foo.date.date %}
+                    {% if custom_date.date == foo.date.date and custom_date.time == foo.date.time %}
                         {{ object.rand_rate }},
-                        {% else %}
+                    {% else %}
                         '',
                     {% endif %}
                 {% endfor %}
