@@ -34,10 +34,25 @@
 <script>
 
     $(document).ready(function () {
+        path_name = window.location.pathname
+        let count = 0;
+        let endpoint = "";
+        for (var i = 0; i < path_name.length; i++) {
+            if (path_name[i] == '/') {
+                count += 1;
+            }
+            if (count < 2) {
+                endpoint += path_name[i];
+            }
+
+            {#console.log("Endpount is " + endpoint);#}
+        }
+
         $("#mybtn").click(function (event) {
             event.preventDefault()
             loan_id = $("#id_field").val()
-            window.location.href = 'http://127.0.0.1:8000/plot/' + loan_id
+            window.location.href = 'http://127.0.0.1:8000' + endpoint + '/' + loan_id;
+            console.log(window.location.href)
         })
 
     })
