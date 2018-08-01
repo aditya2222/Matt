@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e2c9c883-2088-4ad8-bfce-39c4d0177144" name="Default" comment="javascript redirect url">
+    <list default="true" id="e2c9c883-2088-4ad8-bfce-39c4d0177144" name="Default" comment="URL wiring">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Matt/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Matt/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/templates/webapp/welcome.html" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/templates/webapp/welcome.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -29,16 +30,16 @@
       <usages-collector id="statistics.js.language.service.starts" />
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="html" value="1920" />
-          <entry key="py" value="2594" />
-          <entry key="txt" value="227" />
+          <entry key="html" value="2246" />
+          <entry key="py" value="2603" />
+          <entry key="txt" value="237" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="HTML" value="1920" />
-          <entry key="PLAIN_TEXT" value="227" />
-          <entry key="Python" value="2594" />
+          <entry key="HTML" value="2246" />
+          <entry key="PLAIN_TEXT" value="237" />
+          <entry key="Python" value="2603" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
@@ -75,18 +76,6 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Matt/urls.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="25" column="38" selection-start-line="25" selection-start-column="38" selection-end-line="25" selection-end-column="38" />
-              <folding>
-                <element signature="e#628#660#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/base.html">
           <provider selected="true" editor-type-id="text-editor">
@@ -97,10 +86,22 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Matt/urls.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="480">
+              <caret line="32" column="62" selection-start-line="32" selection-start-column="62" selection-end-line="32" selection-end-column="62" />
+              <folding>
+                <element signature="e#628#660#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/webapp/templates/webapp/welcome.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="12" column="14" lean-forward="true" selection-start-line="12" selection-start-column="14" selection-end-line="12" selection-end-column="14" />
+            <state relative-caret-position="135">
+              <caret line="9" column="39" selection-start-line="9" selection-start-column="39" selection-end-line="9" selection-end-column="39" />
             </state>
           </provider>
         </entry>
@@ -151,11 +152,11 @@
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/webapp/models.py" />
         <option value="$PROJECT_DIR$/webapp/admin.py" />
-        <option value="$PROJECT_DIR$/webapp/templates/webapp/welcome.html" />
         <option value="$PROJECT_DIR$/Matt/settings.py" />
         <option value="$PROJECT_DIR$/webapp/views.py" />
         <option value="$PROJECT_DIR$/webapp/templates/webapp/charts.html" />
         <option value="$PROJECT_DIR$/Matt/urls.py" />
+        <option value="$PROJECT_DIR$/webapp/templates/webapp/welcome.html" />
       </list>
     </option>
   </component>
@@ -385,7 +386,14 @@
       <option name="project" value="LOCAL" />
       <updated>1533133753896</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="URL wiring">
+      <created>1533136240426</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1533136240426</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TodoView">
@@ -401,7 +409,7 @@
     <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26674044" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26674044" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -413,7 +421,7 @@
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32972974" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" order="9" visible="true" weight="0.33081082" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="9" visible="true" weight="0.33081082" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="11" weight="0.32972974" />
       <window_info anchor="bottom" id="Python Console" order="12" weight="0.32972974" />
@@ -468,7 +476,8 @@
     <MESSAGE value="database settings commit" />
     <MESSAGE value="views.py changes" />
     <MESSAGE value="javascript redirect url" />
-    <option name="LAST_COMMIT_MESSAGE" value="javascript redirect url" />
+    <MESSAGE value="URL wiring" />
+    <option name="LAST_COMMIT_MESSAGE" value="URL wiring" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/webapp/migrations/example.py" />
@@ -568,13 +577,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webapp/templates/webapp/welcome.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="14" lean-forward="true" selection-start-line="12" selection-start-column="14" selection-end-line="12" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/webapp/templates/webapp/fusioncharts-html-template.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -587,11 +589,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Matt/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="25" column="38" selection-start-line="25" selection-start-column="38" selection-end-line="25" selection-end-column="38" />
+        <state relative-caret-position="480">
+          <caret line="32" column="62" selection-start-line="32" selection-start-column="62" selection-end-line="32" selection-end-column="62" />
           <folding>
             <element signature="e#628#660#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webapp/templates/webapp/welcome.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="39" selection-start-line="9" selection-start-column="39" selection-end-line="9" selection-end-column="39" />
         </state>
       </provider>
     </entry>
