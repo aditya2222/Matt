@@ -15,13 +15,23 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from webapp.views import PlotLoan1, PlotLoan2
+from webapp.views import PlotLoan1, PlotLoan2, PlotLoan3, PlotLoan4, PlotLoan5, PlotLoan6, PlotLoan7, PlotLoan8, \
+    PlotLoan9, PlotLoan10
 from django.views.generic import TemplateView
 
 urlpatterns = [
     path('', TemplateView.as_view(template_name='webapp/welcome.html'), name='homepage'),
     path('plot1/<int:pk>', PlotLoan1.as_view(), name='loan1'),
     path('plot2/<int:pk>', PlotLoan2.as_view(), name='loan2'),
+    path('plot3/<int:pk>', PlotLoan3.as_view(), name='loan2'),
+    path('plot4/<int:pk>', PlotLoan4.as_view(), name='loan2'),
+    path('plot5/<int:pk>', PlotLoan5.as_view(), name='loan2'),
+    path('plot6/<int:pk>', PlotLoan6.as_view(), name='loan2'),
+    path('plot7/<int:pk>', PlotLoan7.as_view(), name='loan2'),
+    path('plot8/<int:pk>', PlotLoan8.as_view(), name='loan2'),
+    path('plot9/<int:pk>', PlotLoan9.as_view(), name='loan2'),
+    path('plot10/<int:pk>', PlotLoan10.as_view(), name='loan2'),
+
     path('admin/', admin.site.urls),
 
 ]
