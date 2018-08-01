@@ -106,6 +106,7 @@ class PlotLoan1(DetailView):
         context['custom_date'] = self.object.date
         return context
 
+
 class PlotLoan2(DetailView):
     template_name = 'webapp/charts.html'
     model = SpreadSheet2
@@ -137,3 +138,578 @@ class PlotLoan2(DetailView):
         context['custom_date'] = self.object.date
         return context
 
+
+class PlotLoan3(DetailView):
+    template_name = 'webapp/charts.html'
+    model = SpreadSheet3
+
+    def get_context_data(self, **kwargs):
+        newlist = []
+        exact_date = self.object.date.date()
+        # clr_queryset = SpreadSheet1.objects.filter(
+        #     date__range=[str(self.object.date.date()), str(self.object.date.date() + timedelta(days=7))]).values('clr')
+        clr_queryset = SpreadSheet3.objects.filter(
+            Q(date__range=[str(exact_date - timedelta(days=7)), str(exact_date)]) |
+            Q(date__day=exact_date.day, date__month=exact_date.month, date__year=exact_date.year) |
+            Q(date__range=[str(exact_date), str(exact_date + timedelta(days=7))])
+
+        ).values(
+            'clr')
+
+        for i in clr_queryset:
+            newlist.append(i['clr'])
+
+        context = super(PlotLoan3, self).get_context_data(**kwargs)
+        context['date'] = SpreadSheet3.objects.filter(
+            Q(date__range=[str(exact_date - timedelta(days=7)), str(exact_date)]) |
+            Q(date__day=exact_date.day, date__month=exact_date.month, date__year=exact_date.year) |
+            Q(date__range=[str(exact_date), str(exact_date + timedelta(days=7))])
+        )
+        context['clr'] = newlist
+        print(exact_date)
+        context['custom_date'] = self.object.date
+        return context
+
+
+class PlotLoan4(DetailView):
+    template_name = 'webapp/charts.html'
+    model = SpreadSheet4
+
+    def get_context_data(self, **kwargs):
+        newlist = []
+        exact_date = self.object.date.date()
+        # clr_queryset = SpreadSheet1.objects.filter(
+        #     date__range=[str(self.object.date.date()), str(self.object.date.date() + timedelta(days=7))]).values('clr')
+        clr_queryset = SpreadSheet4.objects.filter(
+            Q(date__range=[str(exact_date - timedelta(days=7)), str(exact_date)]) |
+            Q(date__day=exact_date.day, date__month=exact_date.month, date__year=exact_date.year) |
+            Q(date__range=[str(exact_date), str(exact_date + timedelta(days=7))])
+
+        ).values(
+            'clr')
+
+        for i in clr_queryset:
+            newlist.append(i['clr'])
+
+        context = super(PlotLoan4, self).get_context_data(**kwargs)
+        context['date'] = SpreadSheet4.objects.filter(
+            Q(date__range=[str(exact_date - timedelta(days=7)), str(exact_date)]) |
+            Q(date__day=exact_date.day, date__month=exact_date.month, date__year=exact_date.year) |
+            Q(date__range=[str(exact_date), str(exact_date + timedelta(days=7))])
+        )
+        context['clr'] = newlist
+        print(exact_date)
+        context['custom_date'] = self.object.date
+        return context
+
+
+class PlotLoan5(DetailView):
+    template_name = 'webapp/charts.html'
+    model = SpreadSheet2
+
+    def get_context_data(self, **kwargs):
+        newlist = []
+        exact_date = self.object.date.date()
+        # clr_queryset = SpreadSheet1.objects.filter(
+        #     date__range=[str(self.object.date.date()), str(self.object.date.date() + timedelta(days=7))]).values('clr')
+        clr_queryset = SpreadSheet5.objects.filter(
+            Q(date__range=[str(exact_date - timedelta(days=7)), str(exact_date)]) |
+            Q(date__day=exact_date.day, date__month=exact_date.month, date__year=exact_date.year) |
+            Q(date__range=[str(exact_date), str(exact_date + timedelta(days=7))])
+
+        ).values(
+            'clr')
+
+        for i in clr_queryset:
+            newlist.append(i['clr'])
+
+        context = super(PlotLoan5, self).get_context_data(**kwargs)
+        context['date'] = SpreadSheet5.objects.filter(
+            Q(date__range=[str(exact_date - timedelta(days=7)), str(exact_date)]) |
+            Q(date__day=exact_date.day, date__month=exact_date.month, date__year=exact_date.year) |
+            Q(date__range=[str(exact_date), str(exact_date + timedelta(days=7))])
+        )
+        context['clr'] = newlist
+        print(exact_date)
+        context['custom_date'] = self.object.date
+        return context
+
+
+class PlotLoan6(DetailView):
+    template_name = 'webapp/charts.html'
+    model = SpreadSheet2
+
+    def get_context_data(self, **kwargs):
+        newlist = []
+        exact_date = self.object.date.date()
+        # clr_queryset = SpreadSheet1.objects.filter(
+        #     date__range=[str(self.object.date.date()), str(self.object.date.date() + timedelta(days=7))]).values('clr')
+        clr_queryset = SpreadSheet6.objects.filter(
+            Q(date__range=[str(exact_date - timedelta(days=7)), str(exact_date)]) |
+            Q(date__day=exact_date.day, date__month=exact_date.month, date__year=exact_date.year) |
+            Q(date__range=[str(exact_date), str(exact_date + timedelta(days=7))])
+
+        ).values(
+            'clr')
+
+        for i in clr_queryset:
+            newlist.append(i['clr'])
+
+        context = super(PlotLoan6, self).get_context_data(**kwargs)
+        context['date'] = SpreadSheet6.objects.filter(
+            Q(date__range=[str(exact_date - timedelta(days=7)), str(exact_date)]) |
+            Q(date__day=exact_date.day, date__month=exact_date.month, date__year=exact_date.year) |
+            Q(date__range=[str(exact_date), str(exact_date + timedelta(days=7))])
+        )
+        context['clr'] = newlist
+        print(exact_date)
+        context['custom_date'] = self.object.date
+        return context
+
+
+class PlotLoan7(DetailView):
+    template_name = 'webapp/charts.html'
+    model = SpreadSheet2
+
+    def get_context_data(self, **kwargs):
+        newlist = []
+        exact_date = self.object.date.date()
+        # clr_queryset = SpreadSheet1.objects.filter(
+        #     date__range=[str(self.object.date.date()), str(self.object.date.date() + timedelta(days=7))]).values('clr')
+        clr_queryset = SpreadSheet7.objects.filter(
+            Q(date__range=[str(exact_date - timedelta(days=7)), str(exact_date)]) |
+            Q(date__day=exact_date.day, date__month=exact_date.month, date__year=exact_date.year) |
+            Q(date__range=[str(exact_date), str(exact_date + timedelta(days=7))])
+
+        ).values(
+            'clr')
+
+        for i in clr_queryset:
+            newlist.append(i['clr'])
+
+        context = super(PlotLoan7, self).get_context_data(**kwargs)
+        context['date'] = SpreadSheet7.objects.filter(
+            Q(date__range=[str(exact_date - timedelta(days=7)), str(exact_date)]) |
+            Q(date__day=exact_date.day, date__month=exact_date.month, date__year=exact_date.year) |
+            Q(date__range=[str(exact_date), str(exact_date + timedelta(days=7))])
+        )
+        context['clr'] = newlist
+        print(exact_date)
+        context['custom_date'] = self.object.date
+        return context
+
+
+class PlotLoan8(DetailView):
+    template_name = 'webapp/charts.html'
+    model = SpreadSheet8
+
+    def get_context_data(self, **kwargs):
+        newlist = []
+        exact_date = self.object.date.date()
+        # clr_queryset = SpreadSheet1.objects.filter(
+        #     date__range=[str(self.object.date.date()), str(self.object.date.date() + timedelta(days=7))]).values('clr')
+        clr_queryset = SpreadSheet8.objects.filter(
+            Q(date__range=[str(exact_date - timedelta(days=7)), str(exact_date)]) |
+            Q(date__day=exact_date.day, date__month=exact_date.month, date__year=exact_date.year) |
+            Q(date__range=[str(exact_date), str(exact_date + timedelta(days=7))])
+
+        ).values(
+            'clr')
+
+        for i in clr_queryset:
+            newlist.append(i['clr'])
+
+        context = super(PlotLoan8, self).get_context_data(**kwargs)
+        context['date'] = SpreadSheet8.objects.filter(
+            Q(date__range=[str(exact_date - timedelta(days=7)), str(exact_date)]) |
+            Q(date__day=exact_date.day, date__month=exact_date.month, date__year=exact_date.year) |
+            Q(date__range=[str(exact_date), str(exact_date + timedelta(days=7))])
+        )
+        context['clr'] = newlist
+        print(exact_date)
+        context['custom_date'] = self.object.date
+        return context
+
+
+class PlotLoan9(DetailView):
+    template_name = 'webapp/charts.html'
+    model = SpreadSheet2
+
+    def get_context_data(self, **kwargs):
+        newlist = []
+        exact_date = self.object.date.date()
+        # clr_queryset = SpreadSheet1.objects.filter(
+        #     date__range=[str(self.object.date.date()), str(self.object.date.date() + timedelta(days=7))]).values('clr')
+        clr_queryset = SpreadSheet9.objects.filter(
+            Q(date__range=[str(exact_date - timedelta(days=7)), str(exact_date)]) |
+            Q(date__day=exact_date.day, date__month=exact_date.month, date__year=exact_date.year) |
+            Q(date__range=[str(exact_date), str(exact_date + timedelta(days=7))])
+
+        ).values(
+            'clr')
+
+        for i in clr_queryset:
+            newlist.append(i['clr'])
+
+        context = super(PlotLoan9, self).get_context_data(**kwargs)
+        context['date'] = SpreadSheet9.objects.filter(
+            Q(date__range=[str(exact_date - timedelta(days=7)), str(exact_date)]) |
+            Q(date__day=exact_date.day, date__month=exact_date.month, date__year=exact_date.year) |
+            Q(date__range=[str(exact_date), str(exact_date + timedelta(days=7))])
+        )
+        context['clr'] = newlist
+        print(exact_date)
+        context['custom_date'] = self.object.date
+        return context
+
+
+class PlotLoan10(DetailView):
+    template_name = 'webapp/charts.html'
+    model = SpreadSheet10
+
+    def get_context_data(self, **kwargs):
+        newlist = []
+        exact_date = self.object.date.date()
+        # clr_queryset = SpreadSheet1.objects.filter(
+        #     date__range=[str(self.object.date.date()), str(self.object.date.date() + timedelta(days=7))]).values('clr')
+        clr_queryset = SpreadSheet10.objects.filter(
+            Q(date__range=[str(exact_date - timedelta(days=7)), str(exact_date)]) |
+            Q(date__day=exact_date.day, date__month=exact_date.month, date__year=exact_date.year) |
+            Q(date__range=[str(exact_date), str(exact_date + timedelta(days=7))])
+
+        ).values(
+            'clr')
+
+        for i in clr_queryset:
+            newlist.append(i['clr'])
+
+        context = super(PlotLoan10, self).get_context_data(**kwargs)
+        context['date'] = SpreadSheet10.objects.filter(
+            Q(date__range=[str(exact_date - timedelta(days=7)), str(exact_date)]) |
+            Q(date__day=exact_date.day, date__month=exact_date.month, date__year=exact_date.year) |
+            Q(date__range=[str(exact_date), str(exact_date + timedelta(days=7))])
+        )
+        context['clr'] = newlist
+        print(exact_date)
+        context['custom_date'] = self.object.date
+        return context
+
+
+class PlotLoan2(DetailView):
+    template_name = 'webapp/charts.html'
+    model = SpreadSheet2
+
+    def get_context_data(self, **kwargs):
+        newlist = []
+        exact_date = self.object.date.date()
+        # clr_queryset = SpreadSheet1.objects.filter(
+        #     date__range=[str(self.object.date.date()), str(self.object.date.date() + timedelta(days=7))]).values('clr')
+        clr_queryset = SpreadSheet2.objects.filter(
+            Q(date__range=[str(exact_date - timedelta(days=7)), str(exact_date)]) |
+            Q(date__day=exact_date.day, date__month=exact_date.month, date__year=exact_date.year) |
+            Q(date__range=[str(exact_date), str(exact_date + timedelta(days=7))])
+
+        ).values(
+            'clr')
+
+        for i in clr_queryset:
+            newlist.append(i['clr'])
+
+        context = super(PlotLoan2, self).get_context_data(**kwargs)
+        context['date'] = SpreadSheet2.objects.filter(
+            Q(date__range=[str(exact_date - timedelta(days=7)), str(exact_date)]) |
+            Q(date__day=exact_date.day, date__month=exact_date.month, date__year=exact_date.year) |
+            Q(date__range=[str(exact_date), str(exact_date + timedelta(days=7))])
+        )
+        context['clr'] = newlist
+        print(exact_date)
+        context['custom_date'] = self.object.date
+        return context
+
+
+class PlotLoan2(DetailView):
+    template_name = 'webapp/charts.html'
+    model = SpreadSheet2
+
+    def get_context_data(self, **kwargs):
+        newlist = []
+        exact_date = self.object.date.date()
+        # clr_queryset = SpreadSheet1.objects.filter(
+        #     date__range=[str(self.object.date.date()), str(self.object.date.date() + timedelta(days=7))]).values('clr')
+        clr_queryset = SpreadSheet2.objects.filter(
+            Q(date__range=[str(exact_date - timedelta(days=7)), str(exact_date)]) |
+            Q(date__day=exact_date.day, date__month=exact_date.month, date__year=exact_date.year) |
+            Q(date__range=[str(exact_date), str(exact_date + timedelta(days=7))])
+
+        ).values(
+            'clr')
+
+        for i in clr_queryset:
+            newlist.append(i['clr'])
+
+        context = super(PlotLoan2, self).get_context_data(**kwargs)
+        context['date'] = SpreadSheet2.objects.filter(
+            Q(date__range=[str(exact_date - timedelta(days=7)), str(exact_date)]) |
+            Q(date__day=exact_date.day, date__month=exact_date.month, date__year=exact_date.year) |
+            Q(date__range=[str(exact_date), str(exact_date + timedelta(days=7))])
+        )
+        context['clr'] = newlist
+        print(exact_date)
+        context['custom_date'] = self.object.date
+        return context
+
+
+class PlotLoan2(DetailView):
+    template_name = 'webapp/charts.html'
+    model = SpreadSheet2
+
+    def get_context_data(self, **kwargs):
+        newlist = []
+        exact_date = self.object.date.date()
+        # clr_queryset = SpreadSheet1.objects.filter(
+        #     date__range=[str(self.object.date.date()), str(self.object.date.date() + timedelta(days=7))]).values('clr')
+        clr_queryset = SpreadSheet2.objects.filter(
+            Q(date__range=[str(exact_date - timedelta(days=7)), str(exact_date)]) |
+            Q(date__day=exact_date.day, date__month=exact_date.month, date__year=exact_date.year) |
+            Q(date__range=[str(exact_date), str(exact_date + timedelta(days=7))])
+
+        ).values(
+            'clr')
+
+        for i in clr_queryset:
+            newlist.append(i['clr'])
+
+        context = super(PlotLoan2, self).get_context_data(**kwargs)
+        context['date'] = SpreadSheet2.objects.filter(
+            Q(date__range=[str(exact_date - timedelta(days=7)), str(exact_date)]) |
+            Q(date__day=exact_date.day, date__month=exact_date.month, date__year=exact_date.year) |
+            Q(date__range=[str(exact_date), str(exact_date + timedelta(days=7))])
+        )
+        context['clr'] = newlist
+        print(exact_date)
+        context['custom_date'] = self.object.date
+        return context
+
+
+class PlotLoan2(DetailView):
+    template_name = 'webapp/charts.html'
+    model = SpreadSheet2
+
+    def get_context_data(self, **kwargs):
+        newlist = []
+        exact_date = self.object.date.date()
+        # clr_queryset = SpreadSheet1.objects.filter(
+        #     date__range=[str(self.object.date.date()), str(self.object.date.date() + timedelta(days=7))]).values('clr')
+        clr_queryset = SpreadSheet2.objects.filter(
+            Q(date__range=[str(exact_date - timedelta(days=7)), str(exact_date)]) |
+            Q(date__day=exact_date.day, date__month=exact_date.month, date__year=exact_date.year) |
+            Q(date__range=[str(exact_date), str(exact_date + timedelta(days=7))])
+
+        ).values(
+            'clr')
+
+        for i in clr_queryset:
+            newlist.append(i['clr'])
+
+        context = super(PlotLoan2, self).get_context_data(**kwargs)
+        context['date'] = SpreadSheet2.objects.filter(
+            Q(date__range=[str(exact_date - timedelta(days=7)), str(exact_date)]) |
+            Q(date__day=exact_date.day, date__month=exact_date.month, date__year=exact_date.year) |
+            Q(date__range=[str(exact_date), str(exact_date + timedelta(days=7))])
+        )
+        context['clr'] = newlist
+        print(exact_date)
+        context['custom_date'] = self.object.date
+        return context
+
+
+class PlotLoan2(DetailView):
+    template_name = 'webapp/charts.html'
+    model = SpreadSheet2
+
+    def get_context_data(self, **kwargs):
+        newlist = []
+        exact_date = self.object.date.date()
+        # clr_queryset = SpreadSheet1.objects.filter(
+        #     date__range=[str(self.object.date.date()), str(self.object.date.date() + timedelta(days=7))]).values('clr')
+        clr_queryset = SpreadSheet2.objects.filter(
+            Q(date__range=[str(exact_date - timedelta(days=7)), str(exact_date)]) |
+            Q(date__day=exact_date.day, date__month=exact_date.month, date__year=exact_date.year) |
+            Q(date__range=[str(exact_date), str(exact_date + timedelta(days=7))])
+
+        ).values(
+            'clr')
+
+        for i in clr_queryset:
+            newlist.append(i['clr'])
+
+        context = super(PlotLoan2, self).get_context_data(**kwargs)
+        context['date'] = SpreadSheet2.objects.filter(
+            Q(date__range=[str(exact_date - timedelta(days=7)), str(exact_date)]) |
+            Q(date__day=exact_date.day, date__month=exact_date.month, date__year=exact_date.year) |
+            Q(date__range=[str(exact_date), str(exact_date + timedelta(days=7))])
+        )
+        context['clr'] = newlist
+        print(exact_date)
+        context['custom_date'] = self.object.date
+        return context
+
+
+class PlotLoan2(DetailView):
+    template_name = 'webapp/charts.html'
+    model = SpreadSheet2
+
+    def get_context_data(self, **kwargs):
+        newlist = []
+        exact_date = self.object.date.date()
+        # clr_queryset = SpreadSheet1.objects.filter(
+        #     date__range=[str(self.object.date.date()), str(self.object.date.date() + timedelta(days=7))]).values('clr')
+        clr_queryset = SpreadSheet2.objects.filter(
+            Q(date__range=[str(exact_date - timedelta(days=7)), str(exact_date)]) |
+            Q(date__day=exact_date.day, date__month=exact_date.month, date__year=exact_date.year) |
+            Q(date__range=[str(exact_date), str(exact_date + timedelta(days=7))])
+
+        ).values(
+            'clr')
+
+        for i in clr_queryset:
+            newlist.append(i['clr'])
+
+        context = super(PlotLoan2, self).get_context_data(**kwargs)
+        context['date'] = SpreadSheet2.objects.filter(
+            Q(date__range=[str(exact_date - timedelta(days=7)), str(exact_date)]) |
+            Q(date__day=exact_date.day, date__month=exact_date.month, date__year=exact_date.year) |
+            Q(date__range=[str(exact_date), str(exact_date + timedelta(days=7))])
+        )
+        context['clr'] = newlist
+        print(exact_date)
+        context['custom_date'] = self.object.date
+        return context
+
+
+class PlotLoan2(DetailView):
+    template_name = 'webapp/charts.html'
+    model = SpreadSheet2
+
+    def get_context_data(self, **kwargs):
+        newlist = []
+        exact_date = self.object.date.date()
+        # clr_queryset = SpreadSheet1.objects.filter(
+        #     date__range=[str(self.object.date.date()), str(self.object.date.date() + timedelta(days=7))]).values('clr')
+        clr_queryset = SpreadSheet2.objects.filter(
+            Q(date__range=[str(exact_date - timedelta(days=7)), str(exact_date)]) |
+            Q(date__day=exact_date.day, date__month=exact_date.month, date__year=exact_date.year) |
+            Q(date__range=[str(exact_date), str(exact_date + timedelta(days=7))])
+
+        ).values(
+            'clr')
+
+        for i in clr_queryset:
+            newlist.append(i['clr'])
+
+        context = super(PlotLoan2, self).get_context_data(**kwargs)
+        context['date'] = SpreadSheet2.objects.filter(
+            Q(date__range=[str(exact_date - timedelta(days=7)), str(exact_date)]) |
+            Q(date__day=exact_date.day, date__month=exact_date.month, date__year=exact_date.year) |
+            Q(date__range=[str(exact_date), str(exact_date + timedelta(days=7))])
+        )
+        context['clr'] = newlist
+        print(exact_date)
+        context['custom_date'] = self.object.date
+        return context
+
+
+class PlotLoan2(DetailView):
+    template_name = 'webapp/charts.html'
+    model = SpreadSheet2
+
+    def get_context_data(self, **kwargs):
+        newlist = []
+        exact_date = self.object.date.date()
+        # clr_queryset = SpreadSheet1.objects.filter(
+        #     date__range=[str(self.object.date.date()), str(self.object.date.date() + timedelta(days=7))]).values('clr')
+        clr_queryset = SpreadSheet2.objects.filter(
+            Q(date__range=[str(exact_date - timedelta(days=7)), str(exact_date)]) |
+            Q(date__day=exact_date.day, date__month=exact_date.month, date__year=exact_date.year) |
+            Q(date__range=[str(exact_date), str(exact_date + timedelta(days=7))])
+
+        ).values(
+            'clr')
+
+        for i in clr_queryset:
+            newlist.append(i['clr'])
+
+        context = super(PlotLoan2, self).get_context_data(**kwargs)
+        context['date'] = SpreadSheet2.objects.filter(
+            Q(date__range=[str(exact_date - timedelta(days=7)), str(exact_date)]) |
+            Q(date__day=exact_date.day, date__month=exact_date.month, date__year=exact_date.year) |
+            Q(date__range=[str(exact_date), str(exact_date + timedelta(days=7))])
+        )
+        context['clr'] = newlist
+        print(exact_date)
+        context['custom_date'] = self.object.date
+        return context
+
+
+class PlotLoan2(DetailView):
+    template_name = 'webapp/charts.html'
+    model = SpreadSheet2
+
+    def get_context_data(self, **kwargs):
+        newlist = []
+        exact_date = self.object.date.date()
+        # clr_queryset = SpreadSheet1.objects.filter(
+        #     date__range=[str(self.object.date.date()), str(self.object.date.date() + timedelta(days=7))]).values('clr')
+        clr_queryset = SpreadSheet2.objects.filter(
+            Q(date__range=[str(exact_date - timedelta(days=7)), str(exact_date)]) |
+            Q(date__day=exact_date.day, date__month=exact_date.month, date__year=exact_date.year) |
+            Q(date__range=[str(exact_date), str(exact_date + timedelta(days=7))])
+
+        ).values(
+            'clr')
+
+        for i in clr_queryset:
+            newlist.append(i['clr'])
+
+        context = super(PlotLoan2, self).get_context_data(**kwargs)
+        context['date'] = SpreadSheet2.objects.filter(
+            Q(date__range=[str(exact_date - timedelta(days=7)), str(exact_date)]) |
+            Q(date__day=exact_date.day, date__month=exact_date.month, date__year=exact_date.year) |
+            Q(date__range=[str(exact_date), str(exact_date + timedelta(days=7))])
+        )
+        context['clr'] = newlist
+        print(exact_date)
+        context['custom_date'] = self.object.date
+        return context
+
+
+class PlotLoan2(DetailView):
+    template_name = 'webapp/charts.html'
+    model = SpreadSheet2
+
+    def get_context_data(self, **kwargs):
+        newlist = []
+        exact_date = self.object.date.date()
+        # clr_queryset = SpreadSheet1.objects.filter(
+        #     date__range=[str(self.object.date.date()), str(self.object.date.date() + timedelta(days=7))]).values('clr')
+        clr_queryset = SpreadSheet2.objects.filter(
+            Q(date__range=[str(exact_date - timedelta(days=7)), str(exact_date)]) |
+            Q(date__day=exact_date.day, date__month=exact_date.month, date__year=exact_date.year) |
+            Q(date__range=[str(exact_date), str(exact_date + timedelta(days=7))])
+
+        ).values(
+            'clr')
+
+        for i in clr_queryset:
+            newlist.append(i['clr'])
+
+        context = super(PlotLoan2, self).get_context_data(**kwargs)
+        context['date'] = SpreadSheet2.objects.filter(
+            Q(date__range=[str(exact_date - timedelta(days=7)), str(exact_date)]) |
+            Q(date__day=exact_date.day, date__month=exact_date.month, date__year=exact_date.year) |
+            Q(date__range=[str(exact_date), str(exact_date + timedelta(days=7))])
+        )
+        context['clr'] = newlist
+        print(exact_date)
+        context['custom_date'] = self.object.date
+        return context
