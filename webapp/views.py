@@ -202,7 +202,7 @@ class PlotLoan4(DetailView):
 
 class PlotLoan5(DetailView):
     template_name = 'webapp/charts.html'
-    model = SpreadSheet2
+    model = SpreadSheet5
 
     def get_context_data(self, **kwargs):
         newlist = []
@@ -234,7 +234,7 @@ class PlotLoan5(DetailView):
 
 class PlotLoan6(DetailView):
     template_name = 'webapp/charts.html'
-    model = SpreadSheet2
+    model = SpreadSheet6
 
     def get_context_data(self, **kwargs):
         newlist = []
@@ -266,7 +266,7 @@ class PlotLoan6(DetailView):
 
 class PlotLoan7(DetailView):
     template_name = 'webapp/charts.html'
-    model = SpreadSheet2
+    model = SpreadSheet7
 
     def get_context_data(self, **kwargs):
         newlist = []
@@ -330,7 +330,7 @@ class PlotLoan8(DetailView):
 
 class PlotLoan9(DetailView):
     template_name = 'webapp/charts.html'
-    model = SpreadSheet2
+    model = SpreadSheet9
 
     def get_context_data(self, **kwargs):
         newlist = []
