@@ -82,7 +82,7 @@ WSGI_APPLICATION = 'Matt.wsgi.application'
 # }
 #
 import dj_database_url
-
+#
 DATABASES = {
     'default': dj_database_url.config(
         # Heroku Databse Credentials
