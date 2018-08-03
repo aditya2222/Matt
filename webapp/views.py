@@ -71,6 +71,7 @@ from django.db.models import Q
 #
 #     return render(request, 'webapp/charts.html', data)
 
+# Views handling loan starts from here
 
 class PlotLoan1(DetailView):
     template_name = 'webapp/charts.html'
@@ -84,7 +85,8 @@ class PlotLoan1(DetailView):
         clr_queryset = SpreadSheet1.objects.filter(
             Q(date__range=[str(exact_date - timedelta(days=7)), str(exact_date)]) |
             Q(date__day=exact_date.day, date__month=exact_date.month, date__year=exact_date.year) |
-            Q(date__range=[str(exact_date), str(exact_date + timedelta(days=7))])
+            Q(date__range=[str(exact_date), str(
+                exact_date + timedelta(days=7))])
 
         ).values(
             'clr')
@@ -96,7 +98,8 @@ class PlotLoan1(DetailView):
         context['date'] = SpreadSheet1.objects.filter(
             Q(date__range=[str(exact_date - timedelta(days=7)), str(exact_date)]) |
             Q(date__day=exact_date.day, date__month=exact_date.month, date__year=exact_date.year) |
-            Q(date__range=[str(exact_date), str(exact_date + timedelta(days=7))])
+            Q(date__range=[str(exact_date), str(
+                exact_date + timedelta(days=7))])
         )
         context['clr'] = newlist
         print(exact_date)
@@ -116,7 +119,8 @@ class PlotLoan2(DetailView):
         clr_queryset = SpreadSheet2.objects.filter(
             Q(date__range=[str(exact_date - timedelta(days=7)), str(exact_date)]) |
             Q(date__day=exact_date.day, date__month=exact_date.month, date__year=exact_date.year) |
-            Q(date__range=[str(exact_date), str(exact_date + timedelta(days=7))])
+            Q(date__range=[str(exact_date), str(
+                exact_date + timedelta(days=7))])
 
         ).values(
             'clr')
@@ -128,7 +132,8 @@ class PlotLoan2(DetailView):
         context['date'] = SpreadSheet2.objects.filter(
             Q(date__range=[str(exact_date - timedelta(days=7)), str(exact_date)]) |
             Q(date__day=exact_date.day, date__month=exact_date.month, date__year=exact_date.year) |
-            Q(date__range=[str(exact_date), str(exact_date + timedelta(days=7))])
+            Q(date__range=[str(exact_date), str(
+                exact_date + timedelta(days=7))])
         )
         context['clr'] = newlist
         print(exact_date)
@@ -148,7 +153,8 @@ class PlotLoan3(DetailView):
         clr_queryset = SpreadSheet3.objects.filter(
             Q(date__range=[str(exact_date - timedelta(days=7)), str(exact_date)]) |
             Q(date__day=exact_date.day, date__month=exact_date.month, date__year=exact_date.year) |
-            Q(date__range=[str(exact_date), str(exact_date + timedelta(days=7))])
+            Q(date__range=[str(exact_date), str(
+                exact_date + timedelta(days=7))])
 
         ).values(
             'clr')
@@ -160,7 +166,8 @@ class PlotLoan3(DetailView):
         context['date'] = SpreadSheet3.objects.filter(
             Q(date__range=[str(exact_date - timedelta(days=7)), str(exact_date)]) |
             Q(date__day=exact_date.day, date__month=exact_date.month, date__year=exact_date.year) |
-            Q(date__range=[str(exact_date), str(exact_date + timedelta(days=7))])
+            Q(date__range=[str(exact_date), str(
+                exact_date + timedelta(days=7))])
         )
         context['clr'] = newlist
         print(exact_date)
@@ -180,7 +187,8 @@ class PlotLoan4(DetailView):
         clr_queryset = SpreadSheet4.objects.filter(
             Q(date__range=[str(exact_date - timedelta(days=7)), str(exact_date)]) |
             Q(date__day=exact_date.day, date__month=exact_date.month, date__year=exact_date.year) |
-            Q(date__range=[str(exact_date), str(exact_date + timedelta(days=7))])
+            Q(date__range=[str(exact_date), str(
+                exact_date + timedelta(days=7))])
 
         ).values(
             'clr')
@@ -192,7 +200,8 @@ class PlotLoan4(DetailView):
         context['date'] = SpreadSheet4.objects.filter(
             Q(date__range=[str(exact_date - timedelta(days=7)), str(exact_date)]) |
             Q(date__day=exact_date.day, date__month=exact_date.month, date__year=exact_date.year) |
-            Q(date__range=[str(exact_date), str(exact_date + timedelta(days=7))])
+            Q(date__range=[str(exact_date), str(
+                exact_date + timedelta(days=7))])
         )
         context['clr'] = newlist
         print(exact_date)
@@ -212,7 +221,8 @@ class PlotLoan5(DetailView):
         clr_queryset = SpreadSheet5.objects.filter(
             Q(date__range=[str(exact_date - timedelta(days=7)), str(exact_date)]) |
             Q(date__day=exact_date.day, date__month=exact_date.month, date__year=exact_date.year) |
-            Q(date__range=[str(exact_date), str(exact_date + timedelta(days=7))])
+            Q(date__range=[str(exact_date), str(
+                exact_date + timedelta(days=7))])
 
         ).values(
             'clr')
@@ -224,7 +234,8 @@ class PlotLoan5(DetailView):
         context['date'] = SpreadSheet5.objects.filter(
             Q(date__range=[str(exact_date - timedelta(days=7)), str(exact_date)]) |
             Q(date__day=exact_date.day, date__month=exact_date.month, date__year=exact_date.year) |
-            Q(date__range=[str(exact_date), str(exact_date + timedelta(days=7))])
+            Q(date__range=[str(exact_date), str(
+                exact_date + timedelta(days=7))])
         )
         context['clr'] = newlist
         print(exact_date)
@@ -244,7 +255,8 @@ class PlotLoan6(DetailView):
         clr_queryset = SpreadSheet6.objects.filter(
             Q(date__range=[str(exact_date - timedelta(days=7)), str(exact_date)]) |
             Q(date__day=exact_date.day, date__month=exact_date.month, date__year=exact_date.year) |
-            Q(date__range=[str(exact_date), str(exact_date + timedelta(days=7))])
+            Q(date__range=[str(exact_date), str(
+                exact_date + timedelta(days=7))])
 
         ).values(
             'clr')
@@ -256,7 +268,8 @@ class PlotLoan6(DetailView):
         context['date'] = SpreadSheet6.objects.filter(
             Q(date__range=[str(exact_date - timedelta(days=7)), str(exact_date)]) |
             Q(date__day=exact_date.day, date__month=exact_date.month, date__year=exact_date.year) |
-            Q(date__range=[str(exact_date), str(exact_date + timedelta(days=7))])
+            Q(date__range=[str(exact_date), str(
+                exact_date + timedelta(days=7))])
         )
         context['clr'] = newlist
         print(exact_date)
@@ -276,7 +289,8 @@ class PlotLoan7(DetailView):
         clr_queryset = SpreadSheet7.objects.filter(
             Q(date__range=[str(exact_date - timedelta(days=7)), str(exact_date)]) |
             Q(date__day=exact_date.day, date__month=exact_date.month, date__year=exact_date.year) |
-            Q(date__range=[str(exact_date), str(exact_date + timedelta(days=7))])
+            Q(date__range=[str(exact_date), str(
+                exact_date + timedelta(days=7))])
 
         ).values(
             'clr')
@@ -288,7 +302,8 @@ class PlotLoan7(DetailView):
         context['date'] = SpreadSheet7.objects.filter(
             Q(date__range=[str(exact_date - timedelta(days=7)), str(exact_date)]) |
             Q(date__day=exact_date.day, date__month=exact_date.month, date__year=exact_date.year) |
-            Q(date__range=[str(exact_date), str(exact_date + timedelta(days=7))])
+            Q(date__range=[str(exact_date), str(
+                exact_date + timedelta(days=7))])
         )
         context['clr'] = newlist
         print(exact_date)
@@ -308,7 +323,8 @@ class PlotLoan8(DetailView):
         clr_queryset = SpreadSheet8.objects.filter(
             Q(date__range=[str(exact_date - timedelta(days=7)), str(exact_date)]) |
             Q(date__day=exact_date.day, date__month=exact_date.month, date__year=exact_date.year) |
-            Q(date__range=[str(exact_date), str(exact_date + timedelta(days=7))])
+            Q(date__range=[str(exact_date), str(
+                exact_date + timedelta(days=7))])
 
         ).values(
             'clr')
@@ -320,7 +336,8 @@ class PlotLoan8(DetailView):
         context['date'] = SpreadSheet8.objects.filter(
             Q(date__range=[str(exact_date - timedelta(days=7)), str(exact_date)]) |
             Q(date__day=exact_date.day, date__month=exact_date.month, date__year=exact_date.year) |
-            Q(date__range=[str(exact_date), str(exact_date + timedelta(days=7))])
+            Q(date__range=[str(exact_date), str(
+                exact_date + timedelta(days=7))])
         )
         context['clr'] = newlist
         print(exact_date)
@@ -340,7 +357,8 @@ class PlotLoan9(DetailView):
         clr_queryset = SpreadSheet9.objects.filter(
             Q(date__range=[str(exact_date - timedelta(days=7)), str(exact_date)]) |
             Q(date__day=exact_date.day, date__month=exact_date.month, date__year=exact_date.year) |
-            Q(date__range=[str(exact_date), str(exact_date + timedelta(days=7))])
+            Q(date__range=[str(exact_date), str(
+                exact_date + timedelta(days=7))])
 
         ).values(
             'clr')
@@ -352,7 +370,8 @@ class PlotLoan9(DetailView):
         context['date'] = SpreadSheet9.objects.filter(
             Q(date__range=[str(exact_date - timedelta(days=7)), str(exact_date)]) |
             Q(date__day=exact_date.day, date__month=exact_date.month, date__year=exact_date.year) |
-            Q(date__range=[str(exact_date), str(exact_date + timedelta(days=7))])
+            Q(date__range=[str(exact_date), str(
+                exact_date + timedelta(days=7))])
         )
         context['clr'] = newlist
         print(exact_date)
@@ -372,7 +391,8 @@ class PlotLoan10(DetailView):
         clr_queryset = SpreadSheet10.objects.filter(
             Q(date__range=[str(exact_date - timedelta(days=7)), str(exact_date)]) |
             Q(date__day=exact_date.day, date__month=exact_date.month, date__year=exact_date.year) |
-            Q(date__range=[str(exact_date), str(exact_date + timedelta(days=7))])
+            Q(date__range=[str(exact_date), str(
+                exact_date + timedelta(days=7))])
 
         ).values(
             'clr')
@@ -384,7 +404,8 @@ class PlotLoan10(DetailView):
         context['date'] = SpreadSheet10.objects.filter(
             Q(date__range=[str(exact_date - timedelta(days=7)), str(exact_date)]) |
             Q(date__day=exact_date.day, date__month=exact_date.month, date__year=exact_date.year) |
-            Q(date__range=[str(exact_date), str(exact_date + timedelta(days=7))])
+            Q(date__range=[str(exact_date), str(
+                exact_date + timedelta(days=7))])
         )
         context['clr'] = newlist
         print(exact_date)
