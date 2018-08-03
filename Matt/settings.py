@@ -83,12 +83,12 @@ DATABASES = {
 
 import dj_database_url
 #
-#DATABASES = {
-#    'default': dj_database_url.config(
-#        # Heroku Databse Credentials
-#        default='postgres://zafqawdnzzkkum:7c2c87f699c0401cc0adc321f813245a439882cdca3655cd094844935cd58aea@ec2-50-16-241-91.compute-1.amazonaws.com:5432/db5id5vjjq084f'
-#    )
-#}
+DATABASES = {
+   'default': dj_database_url.config(
+       # Heroku Databse Credentials
+       default='postgres://zafqawdnzzkkum:7c2c87f699c0401cc0adc321f813245a439882cdca3655cd094844935cd58aea@ec2-50-16-241-91.compute-1.amazonaws.com:5432/db5id5vjjq084f'
+   )
+}
 
 # DATABASES = {
 #     'default': {

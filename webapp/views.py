@@ -135,6 +135,7 @@ class PlotLoan2(DetailView):
         context['custom_date'] = self.object.date
         return context
 
+
 class PlotLoan3(DetailView):
     template_name = 'webapp/charts.html'
     model = SpreadSheet3
@@ -389,5 +390,3 @@ class PlotLoan10(DetailView):
         print(exact_date)
         context['custom_date'] = self.object.date
         return context
-
-
