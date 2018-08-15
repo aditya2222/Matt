@@ -79,6 +79,7 @@ class PlotLoan1(DetailView):
 
     def get_context_data(self, **kwargs):
         newlist = []
+        btclist = []
         exact_date = self.object.date.date()
         # clr_queryset = SpreadSheet1.objects.filter(
         #     date__range=[str(self.object.date.date()), str(self.object.date.date() + timedelta(days=7))]).values('clr')
@@ -94,6 +95,19 @@ class PlotLoan1(DetailView):
         for i in clr_queryset:
             newlist.append(i['clr'])
 
+
+        btc_usd_price_queyrset = SpreadSheet1.objects.filter(
+            Q(date__range=[str(exact_date - timedelta(days=7)), str(exact_date)]) |
+            Q(date__day=exact_date.day, date__month=exact_date.month, date__year=exact_date.year) |
+            Q(date__range=[str(exact_date), str(
+                exact_date + timedelta(days=7))])
+
+        ).values(
+            'btc_usd_price')
+
+        for i in btc_usd_price_queyrset:
+            btclist.append(i['btc_usd_price'])
+
         context = super(PlotLoan1, self).get_context_data(**kwargs)
         context['date'] = SpreadSheet1.objects.filter(
             Q(date__range=[str(exact_date - timedelta(days=7)), str(exact_date)]) |
@@ -102,6 +116,7 @@ class PlotLoan1(DetailView):
                 exact_date + timedelta(days=7))])
         )
         context['clr'] = newlist
+        context['btc_usd_price'] = btclist
         print(exact_date)
         context['custom_date'] = self.object.date
         return context

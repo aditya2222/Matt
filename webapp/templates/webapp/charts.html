@@ -25,10 +25,15 @@
 
 <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
 
+
+<div id="container1" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+
+
 <div class="container jumbotron">
     <input class="form-control" id="id_field" type="text">
     <button class="btn btn-primary" id="mybtn" type="submit">Submit</button>
 </div>
+
 
 
 <script>
@@ -55,7 +60,7 @@
             console.log(window.location.href)
         })
 
-    })
+    });
 
 
 </script>
@@ -67,10 +72,10 @@
             type: 'line'
         },
         title: {
-            text: 'Monthly Average Temperature'
+            text: 'CLR VS LOAN Analysis'
         },
         subtitle: {
-            text: 'Source: WorldClimate.com'
+            
         },
         xAxis: {
             categories: [{% for foo in date %}
@@ -111,7 +116,65 @@
 
             ]
         }]
-    });
+    })
+</script>
+
+
+
+
+<script>
+
+
+    Highcharts.chart('container1', {
+        chart: {
+            type: 'line'
+        },
+        title: {
+            text: 'BTC price VS LOAN Analysis'
+        },
+        subtitle: {
+           
+        },
+        xAxis: {
+            categories: [{% for foo in date %}
+                "{{ foo.date.date }} {{ foo.date.time }} ",
+            {% endfor %}
+            ]
+        },
+        yAxis: {
+            title: {
+                text: 'Price at time of Loan'
+            }
+        },
+        plotOptions: {
+            line: {
+                dataLabels: {
+                    enabled: false
+                },
+                enableMouseTracking: true
+            }
+        },
+        series: [{
+            name: 'Date',
+            data: [{% for foo in btc_usd_price %}
+                {{ foo }},
+            {% endfor %}
+            ]
+        }, {
+            name: 'Price at time of Loan',
+            data: [
+                {% for foo in date %}
+                    {% if custom_date.date == foo.date.date and custom_date.time == foo.date.time %}
+                        {{ object.btc_usd_price }},
+                    {% else %}
+                        '',
+                    {% endif %}
+                {% endfor %}
+
+
+            ]
+        }]
+    })
 </script>
 </body>
 </html>
