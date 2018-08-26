@@ -1,4 +1,5 @@
 from django.db import models
+from django.shortcuts import reverse
 
 
 # Create your models here.
@@ -96,9 +97,13 @@ class SpreadSheet1(models.Model):
     good_bad = models.FloatField(
         blank=True, null=True)
     date = models.DateTimeField(max_length=120, blank=True, null=True)
+    labelled = models.BooleanField(default=False)
 
     def __str__(self):
         return str(self.date.date())
+
+    def get_absolute_url(self):
+        return reverse('homepage')
 
 
 class SpreadSheet2(models.Model):

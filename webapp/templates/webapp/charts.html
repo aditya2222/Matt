@@ -18,22 +18,41 @@
             crossorigin="anonymous"></script>
 </head>
 <body>
-<div id="container"></div>
+{#highcharts scripts#}
 <script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/highcharts-more.js"></script>
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
 <script src="https://code.highcharts.com/modules/export-data.js"></script>
 
-<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
-
-
-<div id="container1" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6">
+            <div id="container"></div>
+        </div>
+        <div class="col-sm-6">
+            <div id="container1" style=""></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <div id="container3"></div>
+        </div>
+        <div class="col-sm-6">
+            <div id="container4"></div>
+        </div>
+    </div>
+</div>
 
 
 <div class="container jumbotron">
-    <input class="form-control" id="id_field" type="text">
-    <button class="btn btn-primary" id="mybtn" type="submit">Submit</button>
+    <form action="" method="post">
+        {% csrf_token %}
+        <div style="text-align: center;">
+            {{ form.as_p }}
+        </div>
+        <input type="submit" style="margin-left: 46%" class="btn btn-primary">
+    </form>
 </div>
-
 
 
 <script>
@@ -74,9 +93,7 @@
         title: {
             text: 'CLR VS LOAN Analysis'
         },
-        subtitle: {
-            
-        },
+        subtitle: {},
         xAxis: {
             categories: [{% for foo in date %}
                 "{{ foo.date.date }} {{ foo.date.time }} ",
@@ -120,8 +137,6 @@
 </script>
 
 
-
-
 <script>
 
 
@@ -132,9 +147,7 @@
         title: {
             text: 'BTC price VS LOAN Analysis'
         },
-        subtitle: {
-           
-        },
+        subtitle: {},
         xAxis: {
             categories: [{% for foo in date %}
                 "{{ foo.date.date }} {{ foo.date.time }} ",
@@ -176,5 +189,207 @@
         }]
     })
 </script>
+
+
+{#Spreedoneter scripts#}
+<script>
+    Highcharts.chart('container3', {
+
+        chart: {
+            type: 'gauge',
+            plotBackgroundColor: null,
+            plotBackgroundImage: null,
+            plotBorderWidth: 0,
+            plotShadow: false
+        },
+
+        title: {
+            text: 'Speedometer'
+        },
+
+        pane: {
+            startAngle: -150,
+            endAngle: 150,
+            background: [{
+                backgroundColor: {
+                    linearGradient: {x1: 0, y1: 0, x2: 0, y2: 1},
+                    stops: [
+                        [0, '#FFF'],
+                        [1, '#333']
+                    ]
+                },
+                borderWidth: 0,
+                outerRadius: '109%'
+            }, {
+                backgroundColor: {
+                    linearGradient: {x1: 0, y1: 0, x2: 0, y2: 1},
+                    stops: [
+                        [0, '#333'],
+                        [1, '#FFF']
+                    ]
+                },
+                borderWidth: 1,
+                outerRadius: '107%'
+            }, {
+                // default background
+            }, {
+                backgroundColor: '#DDD',
+                borderWidth: 0,
+                outerRadius: '105%',
+                innerRadius: '103%'
+            }]
+        },
+
+        // the value axis
+        yAxis: {
+            min: 0,
+            max: 200,
+
+            minorTickInterval: 'auto',
+            minorTickWidth: 1,
+            minorTickLength: 10,
+            minorTickPosition: 'inside',
+            minorTickColor: '#666',
+
+            tickPixelInterval: 30,
+            tickWidth: 2,
+            tickPosition: 'inside',
+            tickLength: 10,
+            tickColor: '#666',
+            labels: {
+                step: 2,
+                rotation: 'auto'
+            },
+            title: {
+                text: 'km/h'
+            },
+            plotBands: [{
+                from: 0,
+                to: 120,
+                color: '#55BF3B' // green
+            }, {
+                from: 120,
+                to: 160,
+                color: '#DDDF0D' // yellow
+            }, {
+                from: 160,
+                to: 200,
+                color: '#DF5353' // red
+            }]
+        },
+
+        series: [{
+            name: 'Speed',
+            data: [{{ rand_rate }}],
+            tooltip: {
+                valueSuffix: ' km/h'
+            }
+        }]
+
+    },
+// Add some life
+    );
+</script>
+
+
+<script>
+    Highcharts.chart('container4', {
+
+        chart: {
+            type: 'gauge',
+            plotBackgroundColor: null,
+            plotBackgroundImage: null,
+            plotBorderWidth: 0,
+            plotShadow: false
+        },
+
+        title: {
+            text: 'Speedometer'
+        },
+
+        pane: {
+            startAngle: -150,
+            endAngle: 150,
+            background: [{
+                backgroundColor: {
+                    linearGradient: {x1: 0, y1: 0, x2: 0, y2: 1},
+                    stops: [
+                        [0, '#FFF'],
+                        [1, '#333']
+                    ]
+                },
+                borderWidth: 0,
+                outerRadius: '109%'
+            }, {
+                backgroundColor: {
+                    linearGradient: {x1: 0, y1: 0, x2: 0, y2: 1},
+                    stops: [
+                        [0, '#333'],
+                        [1, '#FFF']
+                    ]
+                },
+                borderWidth: 1,
+                outerRadius: '107%'
+            }, {
+                // default background
+            }, {
+                backgroundColor: '#DDD',
+                borderWidth: 0,
+                outerRadius: '105%',
+                innerRadius: '103%'
+            }]
+        },
+
+        // the value axis
+        yAxis: {
+            min: 0,
+            max: 200,
+
+            minorTickInterval: 'auto',
+            minorTickWidth: 1,
+            minorTickLength: 10,
+            minorTickPosition: 'inside',
+            minorTickColor: '#666',
+
+            tickPixelInterval: 30,
+            tickWidth: 2,
+            tickPosition: 'inside',
+            tickLength: 10,
+            tickColor: '#666',
+            labels: {
+                step: 2,
+                rotation: 'auto'
+            },
+            title: {
+                text: 'km/h'
+            },
+            plotBands: [{
+                from: 0,
+                to: 120,
+                color: '#55BF3B' // green
+            }, {
+                from: 120,
+                to: 160,
+                color: '#DDDF0D' // yellow
+            }, {
+                from: 160,
+                to: 200,
+                color: '#DF5353' // red
+            }]
+        },
+
+        series: [{
+            name: 'Speed',
+            data: [{{ rand_rate }}],
+            tooltip: {
+                valueSuffix: ' km/h'
+            }
+        }]
+
+    },
+// Add some life
+    );
+</script>
+
 </body>
 </html>

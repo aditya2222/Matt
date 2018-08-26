@@ -1,7 +1,4 @@
-from django.shortcuts import render
-from django.views.generic import DetailView
-# Include the `fusioncharts.py` file which has required functions to embed the charts in html page
-from .fusioncharts import FusionCharts
+from django.views.generic import DetailView, UpdateView, CreateView
 from .models import *
 from datetime import timedelta
 from django.db.models import Q
@@ -73,13 +70,16 @@ from django.db.models import Q
 
 # Views handling loan starts from here
 
-class PlotLoan1(DetailView):
+class PlotLoan1(UpdateView):
     template_name = 'webapp/charts.html'
     model = SpreadSheet1
+    fields = ['labelled']
 
     def get_context_data(self, **kwargs):
         newlist = []
         btclist = []
+        ethlist = []
+        btcethlist = []
         exact_date = self.object.date.date()
         # clr_queryset = SpreadSheet1.objects.filter(
         #     date__range=[str(self.object.date.date()), str(self.object.date.date() + timedelta(days=7))]).values('clr')
@@ -95,7 +95,6 @@ class PlotLoan1(DetailView):
         for i in clr_queryset:
             newlist.append(i['clr'])
 
-
         btc_usd_price_queyrset = SpreadSheet1.objects.filter(
             Q(date__range=[str(exact_date - timedelta(days=7)), str(exact_date)]) |
             Q(date__day=exact_date.day, date__month=exact_date.month, date__year=exact_date.year) |
@@ -108,6 +107,30 @@ class PlotLoan1(DetailView):
         for i in btc_usd_price_queyrset:
             btclist.append(i['btc_usd_price'])
 
+        eth_usd_price_queyrset = SpreadSheet1.objects.filter(
+            Q(date__range=[str(exact_date - timedelta(days=7)), str(exact_date)]) |
+            Q(date__day=exact_date.day, date__month=exact_date.month, date__year=exact_date.year) |
+            Q(date__range=[str(exact_date), str(
+                exact_date + timedelta(days=7))])
+
+        ).values(
+            'eth_usd_price')
+
+        for i in eth_usd_price_queyrset:
+            ethlist.append(i['eth_usd_price'])
+
+        btc_eth_price_queyrset = SpreadSheet1.objects.filter(
+            Q(date__range=[str(exact_date - timedelta(days=7)), str(exact_date)]) |
+            Q(date__day=exact_date.day, date__month=exact_date.month, date__year=exact_date.year) |
+            Q(date__range=[str(exact_date), str(
+                exact_date + timedelta(days=7))])
+
+        ).values(
+            'btc_eth_price')
+
+        for i in btc_eth_price_queyrset:
+            btcethlist.append(i['btc_eth_price'])
+
         context = super(PlotLoan1, self).get_context_data(**kwargs)
         context['date'] = SpreadSheet1.objects.filter(
             Q(date__range=[str(exact_date - timedelta(days=7)), str(exact_date)]) |
@@ -117,9 +140,17 @@ class PlotLoan1(DetailView):
         )
         context['clr'] = newlist
         context['btc_usd_price'] = btclist
+        context['eth_usd_price'] = ethlist
+        context['btc_eth_price'] = btcethlist
+        context['rand_rate'] = self.object.rand_rate
         print(exact_date)
         context['custom_date'] = self.object.date
         return context
+
+
+class PlotLoan1UpdateView(CreateView):
+    model = SpreadSheet1
+    template_name = 'webapp/charts.html'
 
 
 class PlotLoan2(DetailView):
