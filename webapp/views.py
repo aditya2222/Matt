@@ -1,4 +1,4 @@
-from django.views.generic import DetailView, UpdateView, CreateView
+from django.views.generic import DetailView, UpdateView
 from .models import *
 from datetime import timedelta
 from django.db.models import Q
@@ -148,14 +148,10 @@ class PlotLoan1(UpdateView):
         return context
 
 
-class PlotLoan1UpdateView(CreateView):
-    model = SpreadSheet1
-    template_name = 'webapp/charts.html'
-
-
-class PlotLoan2(DetailView):
+class PlotLoan2(UpdateView):
     template_name = 'webapp/charts.html'
     model = SpreadSheet2
+    fields = ['labelled']
 
     def get_context_data(self, **kwargs):
         newlist = []
@@ -187,9 +183,10 @@ class PlotLoan2(DetailView):
         return context
 
 
-class PlotLoan3(DetailView):
+class PlotLoan3(UpdateView):
     template_name = 'webapp/charts.html'
     model = SpreadSheet3
+    fields = ['labelled']
 
     def get_context_data(self, **kwargs):
         newlist = []
@@ -221,9 +218,10 @@ class PlotLoan3(DetailView):
         return context
 
 
-class PlotLoan4(DetailView):
+class PlotLoan4(UpdateView):
     template_name = 'webapp/charts.html'
     model = SpreadSheet4
+    fields = ['lablled']
 
     def get_context_data(self, **kwargs):
         newlist = []
@@ -255,9 +253,10 @@ class PlotLoan4(DetailView):
         return context
 
 
-class PlotLoan5(DetailView):
+class PlotLoan5(UpdateView):
     template_name = 'webapp/charts.html'
     model = SpreadSheet5
+    fields = ['labelled']
 
     def get_context_data(self, **kwargs):
         newlist = []
@@ -289,9 +288,10 @@ class PlotLoan5(DetailView):
         return context
 
 
-class PlotLoan6(DetailView):
+class PlotLoan6(UpdateView):
     template_name = 'webapp/charts.html'
     model = SpreadSheet6
+    fields = ['labelled']
 
     def get_context_data(self, **kwargs):
         newlist = []
@@ -323,9 +323,10 @@ class PlotLoan6(DetailView):
         return context
 
 
-class PlotLoan7(DetailView):
+class PlotLoan7(UpdateView):
     template_name = 'webapp/charts.html'
     model = SpreadSheet7
+    fields = ['lablled']
 
     def get_context_data(self, **kwargs):
         newlist = []
@@ -357,9 +358,10 @@ class PlotLoan7(DetailView):
         return context
 
 
-class PlotLoan8(DetailView):
+class PlotLoan8(UpdateView):
     template_name = 'webapp/charts.html'
     model = SpreadSheet8
+    fields = ['labelled']
 
     def get_context_data(self, **kwargs):
         newlist = []
@@ -391,9 +393,10 @@ class PlotLoan8(DetailView):
         return context
 
 
-class PlotLoan9(DetailView):
+class PlotLoan9(UpdateView):
     template_name = 'webapp/charts.html'
     model = SpreadSheet9
+    fields = ['labelled']
 
     def get_context_data(self, **kwargs):
         newlist = []
@@ -425,9 +428,10 @@ class PlotLoan9(DetailView):
         return context
 
 
-class PlotLoan10(DetailView):
+class PlotLoan10(UpdateView):
     template_name = 'webapp/charts.html'
     model = SpreadSheet10
+    fields = ['labelled']
 
     def get_context_data(self, **kwargs):
         newlist = []

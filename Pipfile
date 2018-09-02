@@ -33,6 +33,7 @@ et_xmlfile = "==1.0.1"
 PyYAML = "==3.13"
 
 [dev-packages]
+pylint = "*"
 
 [requires]
 python_version = "3.7"

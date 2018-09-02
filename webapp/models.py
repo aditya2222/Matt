@@ -100,7 +100,7 @@ class SpreadSheet1(models.Model):
     labelled = models.BooleanField(default=False)
 
     def __str__(self):
-        return str(self.date.date())
+        return str(self.consumed)
 
     def get_absolute_url(self):
         return reverse('homepage')

@@ -95,9 +95,9 @@ DATA_UPLOAD_MAX_NUMBER_FIELDS = 10240
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'myproject',
-        'USER': 'myprojectuser',
-        'PASSWORD': 'password',
+        'NAME': 'postgres',
+        'USER': 'postgres',
+        'PASSWORD': 'tiktik',
         'HOST': 'localhost',
         'PORT': '',
     }
