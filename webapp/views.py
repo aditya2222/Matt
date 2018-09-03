@@ -80,6 +80,8 @@ class PlotLoan1(UpdateView):
         btclist = []
         ethlist = []
         btcethlist = []
+        supplylist = []
+        demandlist = []
         exact_date = self.object.date.date()
         # clr_queryset = SpreadSheet1.objects.filter(
         #     date__range=[str(self.object.date.date()), str(self.object.date.date() + timedelta(days=7))]).values('clr')
@@ -131,6 +133,31 @@ class PlotLoan1(UpdateView):
         for i in btc_eth_price_queyrset:
             btcethlist.append(i['btc_eth_price'])
 
+
+        supply_queryset = SpreadSheet1.objects.filter(
+            Q(date__range=[str(exact_date - timedelta(days=7)), str(exact_date)]) |
+            Q(date__day=exact_date.day, date__month=exact_date.month, date__year=exact_date.year) |
+            Q(date__range=[str(exact_date), str(
+                exact_date + timedelta(days=7))])
+
+        ).values(
+            'supply')
+
+        for i in supply_queryset:
+            supplylist.append(i['supply'])
+
+
+        demand_queryset = SpreadSheet1.objects.filter(
+            Q(date__range=[str(exact_date - timedelta(days=7)), str(exact_date)]) |
+            Q(date__day=exact_date.day, date__month=exact_date.month, date__year=exact_date.year) |
+            Q(date__range=[str(exact_date), str(
+                exact_date + timedelta(days=7))])
+
+        ).values(
+            'demand')
+        for i in demand_queryset:
+            demandlist.append(i['demand'])
+
         context = super(PlotLoan1, self).get_context_data(**kwargs)
         context['date'] = SpreadSheet1.objects.filter(
             Q(date__range=[str(exact_date - timedelta(days=7)), str(exact_date)]) |
@@ -142,7 +169,10 @@ class PlotLoan1(UpdateView):
         context['btc_usd_price'] = btclist
         context['eth_usd_price'] = ethlist
         context['btc_eth_price'] = btcethlist
+        context['demand'] = demandlist
+        context['supply'] = supplylist
         context['rand_rate'] = self.object.rand_rate
+        context['rand_term'] = self.object.rand_term
         print(exact_date)
         context['custom_date'] = self.object.date
         return context

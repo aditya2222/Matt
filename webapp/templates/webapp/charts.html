@@ -44,6 +44,9 @@
     <div class="col-sm-12" style="text-align:center">
         <h1>{{object.percentage_of_available_funds}}% of total available funds</h1>
     </div>
+    <div class="col-sm-12">
+        <div id="container5"></div>
+    </div>
 </div>
 
 
@@ -193,7 +196,81 @@
     })
 </script>
 
+<script>
 
+
+    Highcharts.chart('container5', {
+        chart: {
+            type: 'line'
+        },
+        title: {
+            text: 'CLR VS LOAN Analysis'
+        },
+        subtitle: {},
+        xAxis: {
+            categories: [{% for foo in date %}
+                "{{ foo.date.date }} {{ foo.date.time }} ",
+            {% endfor %}
+            ]
+        },
+        yAxis: {
+            title: {
+                text: 'CLR'
+            }
+        },
+        plotOptions: {
+            line: {
+                dataLabels: {
+                    enabled: false
+                },
+                enableMouseTracking: true
+            }
+        },
+        series: [{
+            name: 'demand',
+            data: [{% for foo in demand %}
+                {{ foo }},
+            {% endfor %}
+            ]
+        }, {
+            name: 'Demand',
+            data: [
+                {% for foo in date %}
+                    {% if custom_date.date == foo.date.date and custom_date.time == foo.date.time %}
+                        {{ object.demand }},
+                    {% else %}
+                        '',
+                    {% endif %}
+                {% endfor %}
+
+
+            ]
+        },
+        {
+            name: 'supply',
+            data: [{% for foo in supply %}
+                {{ foo }},
+            {% endfor %}
+            ]
+        }, {
+            name: 'Demand',
+            data: [
+                {% for foo in date %}
+                    {% if custom_date.date == foo.date.date and custom_date.time == foo.date.time %}
+                        {{ object.supply }},
+                    {% else %}
+                        '',
+                    {% endif %}
+                {% endfor %}
+
+
+            ]
+        }
+
+
+        ]
+    })
+</script>
 {#Spreedoneter scripts#}
 <script>
     Highcharts.chart('container3', {
@@ -246,7 +323,7 @@
         // the value axis
         yAxis: {
             min: 0,
-            max: 200,
+            max: 30,
 
             minorTickInterval: 'auto',
             minorTickWidth: 1,
@@ -268,22 +345,14 @@
             },
             plotBands: [{
                 from: 0,
-                to: 120,
+                to: 30,
                 color: '#55BF3B' // green
-            }, {
-                from: 120,
-                to: 160,
-                color: '#DDDF0D' // yellow
-            }, {
-                from: 160,
-                to: 200,
-                color: '#DF5353' // red
             }]
         },
 
         series: [{
             name: 'Speed',
-            data: [{{ rand_rate }}],
+            data: [{{ rand_term }}],
             tooltip: {
                 valueSuffix: ' km/h'
             }
@@ -346,7 +415,7 @@
         // the value axis
         yAxis: {
             min: 0,
-            max: 200,
+            max: 5,
 
             minorTickInterval: 'auto',
             minorTickWidth: 1,
@@ -393,6 +462,11 @@
 // Add some life
     );
 </script>
+
+
+
+
+
 
 </body>
 </html>
