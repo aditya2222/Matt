@@ -25,6 +25,16 @@
 <script src="https://code.highcharts.com/modules/export-data.js"></script>
 
 <div class="container">
+    <div class="jumbotron">
+        <div class="row">
+            <div class="col-sm-6">
+                 <h3 style="text-align:center">{{ day_of_week }}</h3>
+            </div>
+            <div class="col-sm-6">
+               <h3>Status: {{ good_bad }} </h3> 
+            </div>
+        </div>  
+    </div>
     <div class="row">
         <div class="col-sm-6">
             <div id="container"></div>
@@ -42,7 +52,7 @@
         </div>
     </div>
     <div class="col-sm-12" style="text-align:center">
-        <h1>{{object.percentage_of_available_funds}}% of total available funds</h1>
+        <h1>{{percentage_of_available_funds}}% of total available funds</h1>
     </div>
     <div class="col-sm-12">
         <div id="container5"></div>
@@ -53,15 +63,25 @@
         <button class="btn btn-primary" id="mybtn">Submit</button>
         
     </div>
+   <!-- <div class="row jumbotron">
+        <div class="col-sm-6">
+            <label for="wasloangood">Was the loan good</label>
+            <input type="checkbox" id="wasloangood" name="">
+        </div>
+        <div class="col-sm-6">
+            <label for="wasloanconsumed">Was the loan consumed</label>
+            <input type="checkbox" id="wasloanconsumed" name="">
+        </div>
+    </div>-->
 </div>
 
 
 <div class="container jumbotron">
     <form action="" method="post">
         {% csrf_token %}
-        <div style="text-align: center;">
+        
             {{ form.as_p }}
-        </div>
+        
         <input type="submit" style="margin-left: 46%" class="btn btn-primary">
     </form>
 </div>
@@ -71,6 +91,7 @@
 
     $(document).ready(function () {
         path_name = window.location.pathname
+        console.log(window.location.origin)
         let count = 0;
         let endpoint = "";
         for (var i = 0; i < path_name.length; i++) {
@@ -87,7 +108,7 @@
         $("#mybtn").click(function (event) {
             event.preventDefault()
             loan_id = $("#id_field").val()
-            window.location.href = 'https://matt-test-app.herokuapp.com' + endpoint + '/' + loan_id;
+            window.location.href = window.location.origin + endpoint + '/' + loan_id;
             console.log(window.location.href)
         })
 

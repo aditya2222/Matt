@@ -73,7 +73,7 @@ from django.db.models import Q
 class PlotLoan1(UpdateView):
     template_name = 'webapp/charts.html'
     model = SpreadSheet1
-    fields = ['labelled']
+    fields = ['labelled','good_bad','consumed']
 
     def get_context_data(self, **kwargs):
         newlist = []
@@ -165,6 +165,26 @@ class PlotLoan1(UpdateView):
             Q(date__range=[str(exact_date), str(
                 exact_date + timedelta(days=7))])
         )
+        # logic to manage days of week
+        if self.object.day_of_week==1:
+            context['day_of_week'] = 'Monday'
+        elif self.object.day_of_week==2:
+            context['day_of_week'] = 'Tuesday'
+        elif self.object.day_of_week==3:
+            context['day_of_week'] = 'Wednesday'
+        elif self.object.day_of_week==4:
+            context['day_of_week'] = 'Thursday'
+        elif self.object.day_of_week==5:
+            context['day_of_week'] = 'Friday'
+        elif self.object.day_of_week==6:
+            context['day_of_week'] = 'Saturday'
+        else:
+            context['day_of_week'] = 'Sunday'
+        # logic to handle good_bad
+        if self.object.good_bad==0:
+            context['good_bad'] = 'The Loan has not been classified yet'
+        else:
+            context['good_bad'] = 'The Loan has been classified'
         context['clr'] = newlist
         context['btc_usd_price'] = btclist
         context['eth_usd_price'] = ethlist
@@ -173,18 +193,25 @@ class PlotLoan1(UpdateView):
         context['supply'] = supplylist
         context['rand_rate'] = self.object.rand_rate
         context['rand_term'] = self.object.rand_term
+        context['percentage_of_available_funds'] = self.object.percentage_of_available_funds*100
         print(exact_date)
         context['custom_date'] = self.object.date
         return context
 
 
+
 class PlotLoan2(UpdateView):
     template_name = 'webapp/charts.html'
     model = SpreadSheet2
-    fields = ['labelled']
+    fields = ['labelled','good_bad','consumed']
 
     def get_context_data(self, **kwargs):
         newlist = []
+        btclist = []
+        ethlist = []
+        btcethlist = []
+        supplylist = []
+        demandlist = []
         exact_date = self.object.date.date()
         # clr_queryset = SpreadSheet1.objects.filter(
         #     date__range=[str(self.object.date.date()), str(self.object.date.date() + timedelta(days=7))]).values('clr')
@@ -200,6 +227,67 @@ class PlotLoan2(UpdateView):
         for i in clr_queryset:
             newlist.append(i['clr'])
 
+        btc_usd_price_queyrset = SpreadSheet2.objects.filter(
+            Q(date__range=[str(exact_date - timedelta(days=7)), str(exact_date)]) |
+            Q(date__day=exact_date.day, date__month=exact_date.month, date__year=exact_date.year) |
+            Q(date__range=[str(exact_date), str(
+                exact_date + timedelta(days=7))])
+
+        ).values(
+            'btc_usd_price')
+
+        for i in btc_usd_price_queyrset:
+            btclist.append(i['btc_usd_price'])
+
+        eth_usd_price_queyrset = SpreadSheet2.objects.filter(
+            Q(date__range=[str(exact_date - timedelta(days=7)), str(exact_date)]) |
+            Q(date__day=exact_date.day, date__month=exact_date.month, date__year=exact_date.year) |
+            Q(date__range=[str(exact_date), str(
+                exact_date + timedelta(days=7))])
+
+        ).values(
+            'eth_usd_price')
+
+        for i in eth_usd_price_queyrset:
+            ethlist.append(i['eth_usd_price'])
+
+        btc_eth_price_queyrset = SpreadSheet2.objects.filter(
+            Q(date__range=[str(exact_date - timedelta(days=7)), str(exact_date)]) |
+            Q(date__day=exact_date.day, date__month=exact_date.month, date__year=exact_date.year) |
+            Q(date__range=[str(exact_date), str(
+                exact_date + timedelta(days=7))])
+
+        ).values(
+            'btc_eth_price')
+
+        for i in btc_eth_price_queyrset:
+            btcethlist.append(i['btc_eth_price'])
+
+
+        supply_queryset = SpreadSheet2.objects.filter(
+            Q(date__range=[str(exact_date - timedelta(days=7)), str(exact_date)]) |
+            Q(date__day=exact_date.day, date__month=exact_date.month, date__year=exact_date.year) |
+            Q(date__range=[str(exact_date), str(
+                exact_date + timedelta(days=7))])
+
+        ).values(
+            'supply')
+
+        for i in supply_queryset:
+            supplylist.append(i['supply'])
+
+
+        demand_queryset = SpreadSheet2.objects.filter(
+            Q(date__range=[str(exact_date - timedelta(days=7)), str(exact_date)]) |
+            Q(date__day=exact_date.day, date__month=exact_date.month, date__year=exact_date.year) |
+            Q(date__range=[str(exact_date), str(
+                exact_date + timedelta(days=7))])
+
+        ).values(
+            'demand')
+        for i in demand_queryset:
+            demandlist.append(i['demand'])
+
         context = super(PlotLoan2, self).get_context_data(**kwargs)
         context['date'] = SpreadSheet2.objects.filter(
             Q(date__range=[str(exact_date - timedelta(days=7)), str(exact_date)]) |
@@ -207,19 +295,51 @@ class PlotLoan2(UpdateView):
             Q(date__range=[str(exact_date), str(
                 exact_date + timedelta(days=7))])
         )
+        # logic to manage days of week
+        if self.object.day_of_week==1:
+            context['day_of_week'] = 'Monday'
+        elif self.object.day_of_week==2:
+            context['day_of_week'] = 'Tuesday'
+        elif self.object.day_of_week==3:
+            context['day_of_week'] = 'Wednesday'
+        elif self.object.day_of_week==4:
+            context['day_of_week'] = 'Thursday'
+        elif self.object.day_of_week==5:
+            context['day_of_week'] = 'Friday'
+        elif self.object.day_of_week==6:
+            context['day_of_week'] = 'Saturday'
+        else:
+            context['day_of_week'] = 'Sunday'
+        # logic to handle good_bad
+        if self.object.good_bad==0:
+            context['good_bad'] = 'The Loan has not been classified yet'
+        else:
+            context['good_bad'] = 'The Loan has been classified'
         context['clr'] = newlist
+        context['btc_usd_price'] = btclist
+        context['eth_usd_price'] = ethlist
+        context['btc_eth_price'] = btcethlist
+        context['demand'] = demandlist
+        context['supply'] = supplylist
+        context['rand_rate'] = self.object.rand_rate
+        context['rand_term'] = self.object.rand_term
+        context['percentage_of_available_funds'] = self.object.percentage_of_available_funds*100
         print(exact_date)
         context['custom_date'] = self.object.date
         return context
 
-
 class PlotLoan3(UpdateView):
     template_name = 'webapp/charts.html'
     model = SpreadSheet3
-    fields = ['labelled']
+    fields = ['labelled','good_bad','consumed']
 
     def get_context_data(self, **kwargs):
         newlist = []
+        btclist = []
+        ethlist = []
+        btcethlist = []
+        supplylist = []
+        demandlist = []
         exact_date = self.object.date.date()
         # clr_queryset = SpreadSheet1.objects.filter(
         #     date__range=[str(self.object.date.date()), str(self.object.date.date() + timedelta(days=7))]).values('clr')
@@ -235,6 +355,67 @@ class PlotLoan3(UpdateView):
         for i in clr_queryset:
             newlist.append(i['clr'])
 
+        btc_usd_price_queyrset = SpreadSheet3.objects.filter(
+            Q(date__range=[str(exact_date - timedelta(days=7)), str(exact_date)]) |
+            Q(date__day=exact_date.day, date__month=exact_date.month, date__year=exact_date.year) |
+            Q(date__range=[str(exact_date), str(
+                exact_date + timedelta(days=7))])
+
+        ).values(
+            'btc_usd_price')
+
+        for i in btc_usd_price_queyrset:
+            btclist.append(i['btc_usd_price'])
+
+        eth_usd_price_queyrset = SpreadSheet3.objects.filter(
+            Q(date__range=[str(exact_date - timedelta(days=7)), str(exact_date)]) |
+            Q(date__day=exact_date.day, date__month=exact_date.month, date__year=exact_date.year) |
+            Q(date__range=[str(exact_date), str(
+                exact_date + timedelta(days=7))])
+
+        ).values(
+            'eth_usd_price')
+
+        for i in eth_usd_price_queyrset:
+            ethlist.append(i['eth_usd_price'])
+
+        btc_eth_price_queyrset = SpreadSheet3.objects.filter(
+            Q(date__range=[str(exact_date - timedelta(days=7)), str(exact_date)]) |
+            Q(date__day=exact_date.day, date__month=exact_date.month, date__year=exact_date.year) |
+            Q(date__range=[str(exact_date), str(
+                exact_date + timedelta(days=7))])
+
+        ).values(
+            'btc_eth_price')
+
+        for i in btc_eth_price_queyrset:
+            btcethlist.append(i['btc_eth_price'])
+
+
+        supply_queryset = SpreadSheet3.objects.filter(
+            Q(date__range=[str(exact_date - timedelta(days=7)), str(exact_date)]) |
+            Q(date__day=exact_date.day, date__month=exact_date.month, date__year=exact_date.year) |
+            Q(date__range=[str(exact_date), str(
+                exact_date + timedelta(days=7))])
+
+        ).values(
+            'supply')
+
+        for i in supply_queryset:
+            supplylist.append(i['supply'])
+
+
+        demand_queryset = SpreadSheet3.objects.filter(
+            Q(date__range=[str(exact_date - timedelta(days=7)), str(exact_date)]) |
+            Q(date__day=exact_date.day, date__month=exact_date.month, date__year=exact_date.year) |
+            Q(date__range=[str(exact_date), str(
+                exact_date + timedelta(days=7))])
+
+        ).values(
+            'demand')
+        for i in demand_queryset:
+            demandlist.append(i['demand'])
+
         context = super(PlotLoan3, self).get_context_data(**kwargs)
         context['date'] = SpreadSheet3.objects.filter(
             Q(date__range=[str(exact_date - timedelta(days=7)), str(exact_date)]) |
@@ -242,19 +423,51 @@ class PlotLoan3(UpdateView):
             Q(date__range=[str(exact_date), str(
                 exact_date + timedelta(days=7))])
         )
+        # logic to manage days of week
+        if self.object.day_of_week==1:
+            context['day_of_week'] = 'Monday'
+        elif self.object.day_of_week==2:
+            context['day_of_week'] = 'Tuesday'
+        elif self.object.day_of_week==3:
+            context['day_of_week'] = 'Wednesday'
+        elif self.object.day_of_week==4:
+            context['day_of_week'] = 'Thursday'
+        elif self.object.day_of_week==5:
+            context['day_of_week'] = 'Friday'
+        elif self.object.day_of_week==6:
+            context['day_of_week'] = 'Saturday'
+        else:
+            context['day_of_week'] = 'Sunday'
+        # logic to handle good_bad
+        if self.object.good_bad==0:
+            context['good_bad'] = 'The Loan has not been classified yet'
+        else:
+            context['good_bad'] = 'The Loan has been classified'
         context['clr'] = newlist
+        context['btc_usd_price'] = btclist
+        context['eth_usd_price'] = ethlist
+        context['btc_eth_price'] = btcethlist
+        context['demand'] = demandlist
+        context['supply'] = supplylist
+        context['rand_rate'] = self.object.rand_rate
+        context['rand_term'] = self.object.rand_term
+        context['percentage_of_available_funds'] = self.object.percentage_of_available_funds*100
         print(exact_date)
         context['custom_date'] = self.object.date
         return context
 
-
 class PlotLoan4(UpdateView):
     template_name = 'webapp/charts.html'
     model = SpreadSheet4
-    fields = ['lablled']
+    fields = ['labelled','good_bad','consumed']
 
     def get_context_data(self, **kwargs):
         newlist = []
+        btclist = []
+        ethlist = []
+        btcethlist = []
+        supplylist = []
+        demandlist = []
         exact_date = self.object.date.date()
         # clr_queryset = SpreadSheet1.objects.filter(
         #     date__range=[str(self.object.date.date()), str(self.object.date.date() + timedelta(days=7))]).values('clr')
@@ -270,6 +483,67 @@ class PlotLoan4(UpdateView):
         for i in clr_queryset:
             newlist.append(i['clr'])
 
+        btc_usd_price_queyrset = SpreadSheet4.objects.filter(
+            Q(date__range=[str(exact_date - timedelta(days=7)), str(exact_date)]) |
+            Q(date__day=exact_date.day, date__month=exact_date.month, date__year=exact_date.year) |
+            Q(date__range=[str(exact_date), str(
+                exact_date + timedelta(days=7))])
+
+        ).values(
+            'btc_usd_price')
+
+        for i in btc_usd_price_queyrset:
+            btclist.append(i['btc_usd_price'])
+
+        eth_usd_price_queyrset = SpreadSheet4.objects.filter(
+            Q(date__range=[str(exact_date - timedelta(days=7)), str(exact_date)]) |
+            Q(date__day=exact_date.day, date__month=exact_date.month, date__year=exact_date.year) |
+            Q(date__range=[str(exact_date), str(
+                exact_date + timedelta(days=7))])
+
+        ).values(
+            'eth_usd_price')
+
+        for i in eth_usd_price_queyrset:
+            ethlist.append(i['eth_usd_price'])
+
+        btc_eth_price_queyrset = SpreadSheet4.objects.filter(
+            Q(date__range=[str(exact_date - timedelta(days=7)), str(exact_date)]) |
+            Q(date__day=exact_date.day, date__month=exact_date.month, date__year=exact_date.year) |
+            Q(date__range=[str(exact_date), str(
+                exact_date + timedelta(days=7))])
+
+        ).values(
+            'btc_eth_price')
+
+        for i in btc_eth_price_queyrset:
+            btcethlist.append(i['btc_eth_price'])
+
+
+        supply_queryset = SpreadSheet4.objects.filter(
+            Q(date__range=[str(exact_date - timedelta(days=7)), str(exact_date)]) |
+            Q(date__day=exact_date.day, date__month=exact_date.month, date__year=exact_date.year) |
+            Q(date__range=[str(exact_date), str(
+                exact_date + timedelta(days=7))])
+
+        ).values(
+            'supply')
+
+        for i in supply_queryset:
+            supplylist.append(i['supply'])
+
+
+        demand_queryset = SpreadSheet4.objects.filter(
+            Q(date__range=[str(exact_date - timedelta(days=7)), str(exact_date)]) |
+            Q(date__day=exact_date.day, date__month=exact_date.month, date__year=exact_date.year) |
+            Q(date__range=[str(exact_date), str(
+                exact_date + timedelta(days=7))])
+
+        ).values(
+            'demand')
+        for i in demand_queryset:
+            demandlist.append(i['demand'])
+
         context = super(PlotLoan4, self).get_context_data(**kwargs)
         context['date'] = SpreadSheet4.objects.filter(
             Q(date__range=[str(exact_date - timedelta(days=7)), str(exact_date)]) |
@@ -277,7 +551,35 @@ class PlotLoan4(UpdateView):
             Q(date__range=[str(exact_date), str(
                 exact_date + timedelta(days=7))])
         )
+        # logic to manage days of week
+        if self.object.day_of_week==1:
+            context['day_of_week'] = 'Monday'
+        elif self.object.day_of_week==2:
+            context['day_of_week'] = 'Tuesday'
+        elif self.object.day_of_week==3:
+            context['day_of_week'] = 'Wednesday'
+        elif self.object.day_of_week==4:
+            context['day_of_week'] = 'Thursday'
+        elif self.object.day_of_week==5:
+            context['day_of_week'] = 'Friday'
+        elif self.object.day_of_week==6:
+            context['day_of_week'] = 'Saturday'
+        else:
+            context['day_of_week'] = 'Sunday'
+        # logic to handle good_bad
+        if self.object.good_bad==0:
+            context['good_bad'] = 'The Loan has not been classified yet'
+        else:
+            context['good_bad'] = 'The Loan has been classified'
         context['clr'] = newlist
+        context['btc_usd_price'] = btclist
+        context['eth_usd_price'] = ethlist
+        context['btc_eth_price'] = btcethlist
+        context['demand'] = demandlist
+        context['supply'] = supplylist
+        context['rand_rate'] = self.object.rand_rate
+        context['rand_term'] = self.object.rand_term
+        context['percentage_of_available_funds'] = self.object.percentage_of_available_funds*100
         print(exact_date)
         context['custom_date'] = self.object.date
         return context
@@ -286,10 +588,15 @@ class PlotLoan4(UpdateView):
 class PlotLoan5(UpdateView):
     template_name = 'webapp/charts.html'
     model = SpreadSheet5
-    fields = ['labelled']
+    fields = ['labelled','good_bad','consumed']
 
     def get_context_data(self, **kwargs):
         newlist = []
+        btclist = []
+        ethlist = []
+        btcethlist = []
+        supplylist = []
+        demandlist = []
         exact_date = self.object.date.date()
         # clr_queryset = SpreadSheet1.objects.filter(
         #     date__range=[str(self.object.date.date()), str(self.object.date.date() + timedelta(days=7))]).values('clr')
@@ -305,6 +612,67 @@ class PlotLoan5(UpdateView):
         for i in clr_queryset:
             newlist.append(i['clr'])
 
+        btc_usd_price_queyrset = SpreadSheet5.objects.filter(
+            Q(date__range=[str(exact_date - timedelta(days=7)), str(exact_date)]) |
+            Q(date__day=exact_date.day, date__month=exact_date.month, date__year=exact_date.year) |
+            Q(date__range=[str(exact_date), str(
+                exact_date + timedelta(days=7))])
+
+        ).values(
+            'btc_usd_price')
+
+        for i in btc_usd_price_queyrset:
+            btclist.append(i['btc_usd_price'])
+
+        eth_usd_price_queyrset = SpreadSheet5.objects.filter(
+            Q(date__range=[str(exact_date - timedelta(days=7)), str(exact_date)]) |
+            Q(date__day=exact_date.day, date__month=exact_date.month, date__year=exact_date.year) |
+            Q(date__range=[str(exact_date), str(
+                exact_date + timedelta(days=7))])
+
+        ).values(
+            'eth_usd_price')
+
+        for i in eth_usd_price_queyrset:
+            ethlist.append(i['eth_usd_price'])
+
+        btc_eth_price_queyrset = SpreadSheet5.objects.filter(
+            Q(date__range=[str(exact_date - timedelta(days=7)), str(exact_date)]) |
+            Q(date__day=exact_date.day, date__month=exact_date.month, date__year=exact_date.year) |
+            Q(date__range=[str(exact_date), str(
+                exact_date + timedelta(days=7))])
+
+        ).values(
+            'btc_eth_price')
+
+        for i in btc_eth_price_queyrset:
+            btcethlist.append(i['btc_eth_price'])
+
+
+        supply_queryset = SpreadSheet5.objects.filter(
+            Q(date__range=[str(exact_date - timedelta(days=7)), str(exact_date)]) |
+            Q(date__day=exact_date.day, date__month=exact_date.month, date__year=exact_date.year) |
+            Q(date__range=[str(exact_date), str(
+                exact_date + timedelta(days=7))])
+
+        ).values(
+            'supply')
+
+        for i in supply_queryset:
+            supplylist.append(i['supply'])
+
+
+        demand_queryset = SpreadSheet5.objects.filter(
+            Q(date__range=[str(exact_date - timedelta(days=7)), str(exact_date)]) |
+            Q(date__day=exact_date.day, date__month=exact_date.month, date__year=exact_date.year) |
+            Q(date__range=[str(exact_date), str(
+                exact_date + timedelta(days=7))])
+
+        ).values(
+            'demand')
+        for i in demand_queryset:
+            demandlist.append(i['demand'])
+
         context = super(PlotLoan5, self).get_context_data(**kwargs)
         context['date'] = SpreadSheet5.objects.filter(
             Q(date__range=[str(exact_date - timedelta(days=7)), str(exact_date)]) |
@@ -312,7 +680,35 @@ class PlotLoan5(UpdateView):
             Q(date__range=[str(exact_date), str(
                 exact_date + timedelta(days=7))])
         )
+        # logic to manage days of week
+        if self.object.day_of_week==1:
+            context['day_of_week'] = 'Monday'
+        elif self.object.day_of_week==2:
+            context['day_of_week'] = 'Tuesday'
+        elif self.object.day_of_week==3:
+            context['day_of_week'] = 'Wednesday'
+        elif self.object.day_of_week==4:
+            context['day_of_week'] = 'Thursday'
+        elif self.object.day_of_week==5:
+            context['day_of_week'] = 'Friday'
+        elif self.object.day_of_week==6:
+            context['day_of_week'] = 'Saturday'
+        else:
+            context['day_of_week'] = 'Sunday'
+        # logic to handle good_bad
+        if self.object.good_bad==0:
+            context['good_bad'] = 'The Loan has not been classified yet'
+        else:
+            context['good_bad'] = 'The Loan has been classified'
         context['clr'] = newlist
+        context['btc_usd_price'] = btclist
+        context['eth_usd_price'] = ethlist
+        context['btc_eth_price'] = btcethlist
+        context['demand'] = demandlist
+        context['supply'] = supplylist
+        context['rand_rate'] = self.object.rand_rate
+        context['rand_term'] = self.object.rand_term
+        context['percentage_of_available_funds'] = self.object.percentage_of_available_funds*100
         print(exact_date)
         context['custom_date'] = self.object.date
         return context
@@ -321,10 +717,15 @@ class PlotLoan5(UpdateView):
 class PlotLoan6(UpdateView):
     template_name = 'webapp/charts.html'
     model = SpreadSheet6
-    fields = ['labelled']
+    fields = ['labelled','good_bad','consumed']
 
     def get_context_data(self, **kwargs):
         newlist = []
+        btclist = []
+        ethlist = []
+        btcethlist = []
+        supplylist = []
+        demandlist = []
         exact_date = self.object.date.date()
         # clr_queryset = SpreadSheet1.objects.filter(
         #     date__range=[str(self.object.date.date()), str(self.object.date.date() + timedelta(days=7))]).values('clr')
@@ -340,6 +741,67 @@ class PlotLoan6(UpdateView):
         for i in clr_queryset:
             newlist.append(i['clr'])
 
+        btc_usd_price_queyrset = SpreadSheet6.objects.filter(
+            Q(date__range=[str(exact_date - timedelta(days=7)), str(exact_date)]) |
+            Q(date__day=exact_date.day, date__month=exact_date.month, date__year=exact_date.year) |
+            Q(date__range=[str(exact_date), str(
+                exact_date + timedelta(days=7))])
+
+        ).values(
+            'btc_usd_price')
+
+        for i in btc_usd_price_queyrset:
+            btclist.append(i['btc_usd_price'])
+
+        eth_usd_price_queyrset = SpreadSheet6.objects.filter(
+            Q(date__range=[str(exact_date - timedelta(days=7)), str(exact_date)]) |
+            Q(date__day=exact_date.day, date__month=exact_date.month, date__year=exact_date.year) |
+            Q(date__range=[str(exact_date), str(
+                exact_date + timedelta(days=7))])
+
+        ).values(
+            'eth_usd_price')
+
+        for i in eth_usd_price_queyrset:
+            ethlist.append(i['eth_usd_price'])
+
+        btc_eth_price_queyrset = SpreadSheet6.objects.filter(
+            Q(date__range=[str(exact_date - timedelta(days=7)), str(exact_date)]) |
+            Q(date__day=exact_date.day, date__month=exact_date.month, date__year=exact_date.year) |
+            Q(date__range=[str(exact_date), str(
+                exact_date + timedelta(days=7))])
+
+        ).values(
+            'btc_eth_price')
+
+        for i in btc_eth_price_queyrset:
+            btcethlist.append(i['btc_eth_price'])
+
+
+        supply_queryset = SpreadSheet6.objects.filter(
+            Q(date__range=[str(exact_date - timedelta(days=7)), str(exact_date)]) |
+            Q(date__day=exact_date.day, date__month=exact_date.month, date__year=exact_date.year) |
+            Q(date__range=[str(exact_date), str(
+                exact_date + timedelta(days=7))])
+
+        ).values(
+            'supply')
+
+        for i in supply_queryset:
+            supplylist.append(i['supply'])
+
+
+        demand_queryset = SpreadSheet6.objects.filter(
+            Q(date__range=[str(exact_date - timedelta(days=7)), str(exact_date)]) |
+            Q(date__day=exact_date.day, date__month=exact_date.month, date__year=exact_date.year) |
+            Q(date__range=[str(exact_date), str(
+                exact_date + timedelta(days=7))])
+
+        ).values(
+            'demand')
+        for i in demand_queryset:
+            demandlist.append(i['demand'])
+
         context = super(PlotLoan6, self).get_context_data(**kwargs)
         context['date'] = SpreadSheet6.objects.filter(
             Q(date__range=[str(exact_date - timedelta(days=7)), str(exact_date)]) |
@@ -347,7 +809,35 @@ class PlotLoan6(UpdateView):
             Q(date__range=[str(exact_date), str(
                 exact_date + timedelta(days=7))])
         )
+        # logic to manage days of week
+        if self.object.day_of_week==1:
+            context['day_of_week'] = 'Monday'
+        elif self.object.day_of_week==2:
+            context['day_of_week'] = 'Tuesday'
+        elif self.object.day_of_week==3:
+            context['day_of_week'] = 'Wednesday'
+        elif self.object.day_of_week==4:
+            context['day_of_week'] = 'Thursday'
+        elif self.object.day_of_week==5:
+            context['day_of_week'] = 'Friday'
+        elif self.object.day_of_week==6:
+            context['day_of_week'] = 'Saturday'
+        else:
+            context['day_of_week'] = 'Sunday'
+        # logic to handle good_bad
+        if self.object.good_bad==0:
+            context['good_bad'] = 'The Loan has not been classified yet'
+        else:
+            context['good_bad'] = 'The Loan has been classified'
         context['clr'] = newlist
+        context['btc_usd_price'] = btclist
+        context['eth_usd_price'] = ethlist
+        context['btc_eth_price'] = btcethlist
+        context['demand'] = demandlist
+        context['supply'] = supplylist
+        context['rand_rate'] = self.object.rand_rate
+        context['rand_term'] = self.object.rand_term
+        context['percentage_of_available_funds'] = self.object.percentage_of_available_funds*100
         print(exact_date)
         context['custom_date'] = self.object.date
         return context
@@ -356,10 +846,15 @@ class PlotLoan6(UpdateView):
 class PlotLoan7(UpdateView):
     template_name = 'webapp/charts.html'
     model = SpreadSheet7
-    fields = ['lablled']
+    fields = ['labelled','good_bad','consumed']
 
     def get_context_data(self, **kwargs):
         newlist = []
+        btclist = []
+        ethlist = []
+        btcethlist = []
+        supplylist = []
+        demandlist = []
         exact_date = self.object.date.date()
         # clr_queryset = SpreadSheet1.objects.filter(
         #     date__range=[str(self.object.date.date()), str(self.object.date.date() + timedelta(days=7))]).values('clr')
@@ -375,6 +870,67 @@ class PlotLoan7(UpdateView):
         for i in clr_queryset:
             newlist.append(i['clr'])
 
+        btc_usd_price_queyrset = SpreadSheet7.objects.filter(
+            Q(date__range=[str(exact_date - timedelta(days=7)), str(exact_date)]) |
+            Q(date__day=exact_date.day, date__month=exact_date.month, date__year=exact_date.year) |
+            Q(date__range=[str(exact_date), str(
+                exact_date + timedelta(days=7))])
+
+        ).values(
+            'btc_usd_price')
+
+        for i in btc_usd_price_queyrset:
+            btclist.append(i['btc_usd_price'])
+
+        eth_usd_price_queyrset = SpreadSheet7.objects.filter(
+            Q(date__range=[str(exact_date - timedelta(days=7)), str(exact_date)]) |
+            Q(date__day=exact_date.day, date__month=exact_date.month, date__year=exact_date.year) |
+            Q(date__range=[str(exact_date), str(
+                exact_date + timedelta(days=7))])
+
+        ).values(
+            'eth_usd_price')
+
+        for i in eth_usd_price_queyrset:
+            ethlist.append(i['eth_usd_price'])
+
+        btc_eth_price_queyrset = SpreadSheet7.objects.filter(
+            Q(date__range=[str(exact_date - timedelta(days=7)), str(exact_date)]) |
+            Q(date__day=exact_date.day, date__month=exact_date.month, date__year=exact_date.year) |
+            Q(date__range=[str(exact_date), str(
+                exact_date + timedelta(days=7))])
+
+        ).values(
+            'btc_eth_price')
+
+        for i in btc_eth_price_queyrset:
+            btcethlist.append(i['btc_eth_price'])
+
+
+        supply_queryset = SpreadSheet7.objects.filter(
+            Q(date__range=[str(exact_date - timedelta(days=7)), str(exact_date)]) |
+            Q(date__day=exact_date.day, date__month=exact_date.month, date__year=exact_date.year) |
+            Q(date__range=[str(exact_date), str(
+                exact_date + timedelta(days=7))])
+
+        ).values(
+            'supply')
+
+        for i in supply_queryset:
+            supplylist.append(i['supply'])
+
+
+        demand_queryset = SpreadSheet7.objects.filter(
+            Q(date__range=[str(exact_date - timedelta(days=7)), str(exact_date)]) |
+            Q(date__day=exact_date.day, date__month=exact_date.month, date__year=exact_date.year) |
+            Q(date__range=[str(exact_date), str(
+                exact_date + timedelta(days=7))])
+
+        ).values(
+            'demand')
+        for i in demand_queryset:
+            demandlist.append(i['demand'])
+
         context = super(PlotLoan7, self).get_context_data(**kwargs)
         context['date'] = SpreadSheet7.objects.filter(
             Q(date__range=[str(exact_date - timedelta(days=7)), str(exact_date)]) |
@@ -382,7 +938,35 @@ class PlotLoan7(UpdateView):
             Q(date__range=[str(exact_date), str(
                 exact_date + timedelta(days=7))])
         )
+        # logic to manage days of week
+        if self.object.day_of_week==1:
+            context['day_of_week'] = 'Monday'
+        elif self.object.day_of_week==2:
+            context['day_of_week'] = 'Tuesday'
+        elif self.object.day_of_week==3:
+            context['day_of_week'] = 'Wednesday'
+        elif self.object.day_of_week==4:
+            context['day_of_week'] = 'Thursday'
+        elif self.object.day_of_week==5:
+            context['day_of_week'] = 'Friday'
+        elif self.object.day_of_week==6:
+            context['day_of_week'] = 'Saturday'
+        else:
+            context['day_of_week'] = 'Sunday'
+        # logic to handle good_bad
+        if self.object.good_bad==0:
+            context['good_bad'] = 'The Loan has not been classified yet'
+        else:
+            context['good_bad'] = 'The Loan has been classified'
         context['clr'] = newlist
+        context['btc_usd_price'] = btclist
+        context['eth_usd_price'] = ethlist
+        context['btc_eth_price'] = btcethlist
+        context['demand'] = demandlist
+        context['supply'] = supplylist
+        context['rand_rate'] = self.object.rand_rate
+        context['rand_term'] = self.object.rand_term
+        context['percentage_of_available_funds'] = self.object.percentage_of_available_funds*100
         print(exact_date)
         context['custom_date'] = self.object.date
         return context
@@ -391,10 +975,15 @@ class PlotLoan7(UpdateView):
 class PlotLoan8(UpdateView):
     template_name = 'webapp/charts.html'
     model = SpreadSheet8
-    fields = ['labelled']
+    fields = ['labelled','good_bad','consumed']
 
     def get_context_data(self, **kwargs):
         newlist = []
+        btclist = []
+        ethlist = []
+        btcethlist = []
+        supplylist = []
+        demandlist = []
         exact_date = self.object.date.date()
         # clr_queryset = SpreadSheet1.objects.filter(
         #     date__range=[str(self.object.date.date()), str(self.object.date.date() + timedelta(days=7))]).values('clr')
@@ -410,6 +999,67 @@ class PlotLoan8(UpdateView):
         for i in clr_queryset:
             newlist.append(i['clr'])
 
+        btc_usd_price_queyrset = SpreadSheet8.objects.filter(
+            Q(date__range=[str(exact_date - timedelta(days=7)), str(exact_date)]) |
+            Q(date__day=exact_date.day, date__month=exact_date.month, date__year=exact_date.year) |
+            Q(date__range=[str(exact_date), str(
+                exact_date + timedelta(days=7))])
+
+        ).values(
+            'btc_usd_price')
+
+        for i in btc_usd_price_queyrset:
+            btclist.append(i['btc_usd_price'])
+
+        eth_usd_price_queyrset = SpreadSheet8.objects.filter(
+            Q(date__range=[str(exact_date - timedelta(days=7)), str(exact_date)]) |
+            Q(date__day=exact_date.day, date__month=exact_date.month, date__year=exact_date.year) |
+            Q(date__range=[str(exact_date), str(
+                exact_date + timedelta(days=7))])
+
+        ).values(
+            'eth_usd_price')
+
+        for i in eth_usd_price_queyrset:
+            ethlist.append(i['eth_usd_price'])
+
+        btc_eth_price_queyrset = SpreadSheet8.objects.filter(
+            Q(date__range=[str(exact_date - timedelta(days=7)), str(exact_date)]) |
+            Q(date__day=exact_date.day, date__month=exact_date.month, date__year=exact_date.year) |
+            Q(date__range=[str(exact_date), str(
+                exact_date + timedelta(days=7))])
+
+        ).values(
+            'btc_eth_price')
+
+        for i in btc_eth_price_queyrset:
+            btcethlist.append(i['btc_eth_price'])
+
+
+        supply_queryset = SpreadSheet8.objects.filter(
+            Q(date__range=[str(exact_date - timedelta(days=7)), str(exact_date)]) |
+            Q(date__day=exact_date.day, date__month=exact_date.month, date__year=exact_date.year) |
+            Q(date__range=[str(exact_date), str(
+                exact_date + timedelta(days=7))])
+
+        ).values(
+            'supply')
+
+        for i in supply_queryset:
+            supplylist.append(i['supply'])
+
+
+        demand_queryset = SpreadSheet8.objects.filter(
+            Q(date__range=[str(exact_date - timedelta(days=7)), str(exact_date)]) |
+            Q(date__day=exact_date.day, date__month=exact_date.month, date__year=exact_date.year) |
+            Q(date__range=[str(exact_date), str(
+                exact_date + timedelta(days=7))])
+
+        ).values(
+            'demand')
+        for i in demand_queryset:
+            demandlist.append(i['demand'])
+
         context = super(PlotLoan8, self).get_context_data(**kwargs)
         context['date'] = SpreadSheet8.objects.filter(
             Q(date__range=[str(exact_date - timedelta(days=7)), str(exact_date)]) |
@@ -417,7 +1067,35 @@ class PlotLoan8(UpdateView):
             Q(date__range=[str(exact_date), str(
                 exact_date + timedelta(days=7))])
         )
+        # logic to manage days of week
+        if self.object.day_of_week==1:
+            context['day_of_week'] = 'Monday'
+        elif self.object.day_of_week==2:
+            context['day_of_week'] = 'Tuesday'
+        elif self.object.day_of_week==3:
+            context['day_of_week'] = 'Wednesday'
+        elif self.object.day_of_week==4:
+            context['day_of_week'] = 'Thursday'
+        elif self.object.day_of_week==5:
+            context['day_of_week'] = 'Friday'
+        elif self.object.day_of_week==6:
+            context['day_of_week'] = 'Saturday'
+        else:
+            context['day_of_week'] = 'Sunday'
+        # logic to handle good_bad
+        if self.object.good_bad==0:
+            context['good_bad'] = 'The Loan has not been classified yet'
+        else:
+            context['good_bad'] = 'The Loan has been classified'
         context['clr'] = newlist
+        context['btc_usd_price'] = btclist
+        context['eth_usd_price'] = ethlist
+        context['btc_eth_price'] = btcethlist
+        context['demand'] = demandlist
+        context['supply'] = supplylist
+        context['rand_rate'] = self.object.rand_rate
+        context['rand_term'] = self.object.rand_term
+        context['percentage_of_available_funds'] = self.object.percentage_of_available_funds*100
         print(exact_date)
         context['custom_date'] = self.object.date
         return context
@@ -426,10 +1104,15 @@ class PlotLoan8(UpdateView):
 class PlotLoan9(UpdateView):
     template_name = 'webapp/charts.html'
     model = SpreadSheet9
-    fields = ['labelled']
+    fields = ['labelled','good_bad','consumed']
 
     def get_context_data(self, **kwargs):
         newlist = []
+        btclist = []
+        ethlist = []
+        btcethlist = []
+        supplylist = []
+        demandlist = []
         exact_date = self.object.date.date()
         # clr_queryset = SpreadSheet1.objects.filter(
         #     date__range=[str(self.object.date.date()), str(self.object.date.date() + timedelta(days=7))]).values('clr')
@@ -445,6 +1128,67 @@ class PlotLoan9(UpdateView):
         for i in clr_queryset:
             newlist.append(i['clr'])
 
+        btc_usd_price_queyrset = SpreadSheet9.objects.filter(
+            Q(date__range=[str(exact_date - timedelta(days=7)), str(exact_date)]) |
+            Q(date__day=exact_date.day, date__month=exact_date.month, date__year=exact_date.year) |
+            Q(date__range=[str(exact_date), str(
+                exact_date + timedelta(days=7))])
+
+        ).values(
+            'btc_usd_price')
+
+        for i in btc_usd_price_queyrset:
+            btclist.append(i['btc_usd_price'])
+
+        eth_usd_price_queyrset = SpreadSheet9.objects.filter(
+            Q(date__range=[str(exact_date - timedelta(days=7)), str(exact_date)]) |
+            Q(date__day=exact_date.day, date__month=exact_date.month, date__year=exact_date.year) |
+            Q(date__range=[str(exact_date), str(
+                exact_date + timedelta(days=7))])
+
+        ).values(
+            'eth_usd_price')
+
+        for i in eth_usd_price_queyrset:
+            ethlist.append(i['eth_usd_price'])
+
+        btc_eth_price_queyrset = SpreadSheet9.objects.filter(
+            Q(date__range=[str(exact_date - timedelta(days=7)), str(exact_date)]) |
+            Q(date__day=exact_date.day, date__month=exact_date.month, date__year=exact_date.year) |
+            Q(date__range=[str(exact_date), str(
+                exact_date + timedelta(days=7))])
+
+        ).values(
+            'btc_eth_price')
+
+        for i in btc_eth_price_queyrset:
+            btcethlist.append(i['btc_eth_price'])
+
+
+        supply_queryset = SpreadSheet9.objects.filter(
+            Q(date__range=[str(exact_date - timedelta(days=7)), str(exact_date)]) |
+            Q(date__day=exact_date.day, date__month=exact_date.month, date__year=exact_date.year) |
+            Q(date__range=[str(exact_date), str(
+                exact_date + timedelta(days=7))])
+
+        ).values(
+            'supply')
+
+        for i in supply_queryset:
+            supplylist.append(i['supply'])
+
+
+        demand_queryset = SpreadSheet9.objects.filter(
+            Q(date__range=[str(exact_date - timedelta(days=7)), str(exact_date)]) |
+            Q(date__day=exact_date.day, date__month=exact_date.month, date__year=exact_date.year) |
+            Q(date__range=[str(exact_date), str(
+                exact_date + timedelta(days=7))])
+
+        ).values(
+            'demand')
+        for i in demand_queryset:
+            demandlist.append(i['demand'])
+
         context = super(PlotLoan9, self).get_context_data(**kwargs)
         context['date'] = SpreadSheet9.objects.filter(
             Q(date__range=[str(exact_date - timedelta(days=7)), str(exact_date)]) |
@@ -452,7 +1196,35 @@ class PlotLoan9(UpdateView):
             Q(date__range=[str(exact_date), str(
                 exact_date + timedelta(days=7))])
         )
+        # logic to manage days of week
+        if self.object.day_of_week==1:
+            context['day_of_week'] = 'Monday'
+        elif self.object.day_of_week==2:
+            context['day_of_week'] = 'Tuesday'
+        elif self.object.day_of_week==3:
+            context['day_of_week'] = 'Wednesday'
+        elif self.object.day_of_week==4:
+            context['day_of_week'] = 'Thursday'
+        elif self.object.day_of_week==5:
+            context['day_of_week'] = 'Friday'
+        elif self.object.day_of_week==6:
+            context['day_of_week'] = 'Saturday'
+        else:
+            context['day_of_week'] = 'Sunday'
+        # logic to handle good_bad
+        if self.object.good_bad==0:
+            context['good_bad'] = 'The Loan has not been classified yet'
+        else:
+            context['good_bad'] = 'The Loan has been classified'
         context['clr'] = newlist
+        context['btc_usd_price'] = btclist
+        context['eth_usd_price'] = ethlist
+        context['btc_eth_price'] = btcethlist
+        context['demand'] = demandlist
+        context['supply'] = supplylist
+        context['rand_rate'] = self.object.rand_rate
+        context['rand_term'] = self.object.rand_term
+        context['percentage_of_available_funds'] = self.object.percentage_of_available_funds*100
         print(exact_date)
         context['custom_date'] = self.object.date
         return context

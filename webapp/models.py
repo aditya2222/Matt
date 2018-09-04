@@ -10,8 +10,7 @@ from django.shortcuts import reverse
 # Models 1-60
 
 class SpreadSheet1(models.Model):
-    consumed = models.FloatField(
-        blank=True, null=True)
+    consumed = models.BooleanField(default=False)
     clr = models.FloatField(blank=True, null=True,
                             )
     spread = models.FloatField(
@@ -94,8 +93,7 @@ class SpreadSheet1(models.Model):
         blank=True, null=True)
     time_of_day = models.FloatField(
         blank=True, null=True)
-    good_bad = models.FloatField(
-        blank=True, null=True)
+    good_bad = models.BooleanField(default=False)
     date = models.DateTimeField(max_length=120, blank=True, null=True)
     labelled = models.BooleanField(default=False)
 
@@ -103,12 +101,10 @@ class SpreadSheet1(models.Model):
         return str(self.consumed)
 
     def get_absolute_url(self):
-        return reverse('homepage')
-
+        return reverse('success')
 
 class SpreadSheet2(models.Model):
-    consumed = models.FloatField(
-        blank=True, null=True)
+    consumed = models.BooleanField(default=False)
     clr = models.FloatField(blank=True, null=True,
                             )
     spread = models.FloatField(
@@ -191,17 +187,19 @@ class SpreadSheet2(models.Model):
         blank=True, null=True)
     time_of_day = models.FloatField(
         blank=True, null=True)
-    good_bad = models.FloatField(
-        blank=True, null=True)
+    good_bad = models.BooleanField(default=False)
     date = models.DateTimeField(max_length=120, blank=True, null=True)
+    labelled = models.BooleanField(default=False)
 
     def __str__(self):
-        return str(self.clr)
+        return str(self.consumed)
+
+    def get_absolute_url(self):
+        return reverse('success')
 
 
 class SpreadSheet3(models.Model):
-    consumed = models.FloatField(
-        blank=True, null=True)
+    consumed = models.BooleanField(default=False)
     clr = models.FloatField(blank=True, null=True,
                             )
     spread = models.FloatField(
@@ -284,17 +282,19 @@ class SpreadSheet3(models.Model):
         blank=True, null=True)
     time_of_day = models.FloatField(
         blank=True, null=True)
-    good_bad = models.FloatField(
-        blank=True, null=True)
+    good_bad = models.BooleanField(default=False)
     date = models.DateTimeField(max_length=120, blank=True, null=True)
+    labelled = models.BooleanField(default=False)
 
     def __str__(self):
-        return str(self.clr)
+        return str(self.consumed)
+
+    def get_absolute_url(self):
+        return reverse('success')
 
 
 class SpreadSheet4(models.Model):
-    consumed = models.FloatField(
-        blank=True, null=True)
+    consumed = models.BooleanField(default=False)
     clr = models.FloatField(blank=True, null=True,
                             )
     spread = models.FloatField(
@@ -377,17 +377,18 @@ class SpreadSheet4(models.Model):
         blank=True, null=True)
     time_of_day = models.FloatField(
         blank=True, null=True)
-    good_bad = models.FloatField(
-        blank=True, null=True)
+    good_bad = models.BooleanField(default=False)
     date = models.DateTimeField(max_length=120, blank=True, null=True)
+    labelled = models.BooleanField(default=False)
 
     def __str__(self):
-        return str(self.clr)
+        return str(self.consumed)
 
+    def get_absolute_url(self):
+        return reverse('success')
 
 class SpreadSheet5(models.Model):
-    consumed = models.FloatField(
-        blank=True, null=True)
+    consumed = models.BooleanField(default=False)
     clr = models.FloatField(blank=True, null=True,
                             )
     spread = models.FloatField(
@@ -470,17 +471,19 @@ class SpreadSheet5(models.Model):
         blank=True, null=True)
     time_of_day = models.FloatField(
         blank=True, null=True)
-    good_bad = models.FloatField(
-        blank=True, null=True)
+    good_bad = models.BooleanField(default=False)
     date = models.DateTimeField(max_length=120, blank=True, null=True)
+    labelled = models.BooleanField(default=False)
 
     def __str__(self):
-        return str(self.clr)
+        return str(self.consumed)
+
+    def get_absolute_url(self):
+        return reverse('success')
 
 
 class SpreadSheet6(models.Model):
-    consumed = models.FloatField(
-        blank=True, null=True)
+    consumed = models.BooleanField(default=False)
     clr = models.FloatField(blank=True, null=True,
                             )
     spread = models.FloatField(
@@ -563,17 +566,19 @@ class SpreadSheet6(models.Model):
         blank=True, null=True)
     time_of_day = models.FloatField(
         blank=True, null=True)
-    good_bad = models.FloatField(
-        blank=True, null=True)
+    good_bad = models.BooleanField(default=False)
     date = models.DateTimeField(max_length=120, blank=True, null=True)
+    labelled = models.BooleanField(default=False)
 
     def __str__(self):
-        return str(self.clr)
+        return str(self.consumed)
+
+    def get_absolute_url(self):
+        return reverse('success')
 
 
 class SpreadSheet7(models.Model):
-    consumed = models.FloatField(
-        blank=True, null=True)
+    consumed = models.BooleanField(default=False)
     clr = models.FloatField(blank=True, null=True,
                             )
     spread = models.FloatField(
@@ -656,17 +661,19 @@ class SpreadSheet7(models.Model):
         blank=True, null=True)
     time_of_day = models.FloatField(
         blank=True, null=True)
-    good_bad = models.FloatField(
-        blank=True, null=True)
+    good_bad = models.BooleanField(default=False)
     date = models.DateTimeField(max_length=120, blank=True, null=True)
+    labelled = models.BooleanField(default=False)
 
     def __str__(self):
-        return str(self.clr)
+        return str(self.consumed)
+
+    def get_absolute_url(self):
+        return reverse('success')
 
 
 class SpreadSheet8(models.Model):
-    consumed = models.FloatField(
-        blank=True, null=True)
+    consumed = models.BooleanField(default=False)
     clr = models.FloatField(blank=True, null=True,
                             )
     spread = models.FloatField(
@@ -749,17 +756,19 @@ class SpreadSheet8(models.Model):
         blank=True, null=True)
     time_of_day = models.FloatField(
         blank=True, null=True)
-    good_bad = models.FloatField(
-        blank=True, null=True)
+    good_bad = models.BooleanField(default=False)
     date = models.DateTimeField(max_length=120, blank=True, null=True)
+    labelled = models.BooleanField(default=False)
 
     def __str__(self):
-        return str(self.clr)
+        return str(self.consumed)
+
+    def get_absolute_url(self):
+        return reverse('success')
 
 
 class SpreadSheet9(models.Model):
-    consumed = models.FloatField(
-        blank=True, null=True)
+    consumed = models.BooleanField(default=False)
     clr = models.FloatField(blank=True, null=True,
                             )
     spread = models.FloatField(
@@ -842,17 +851,19 @@ class SpreadSheet9(models.Model):
         blank=True, null=True)
     time_of_day = models.FloatField(
         blank=True, null=True)
-    good_bad = models.FloatField(
-        blank=True, null=True)
+    good_bad = models.BooleanField(default=False)
     date = models.DateTimeField(max_length=120, blank=True, null=True)
+    labelled = models.BooleanField(default=False)
 
     def __str__(self):
-        return str(self.clr)
+        return str(self.consumed)
+
+    def get_absolute_url(self):
+        return reverse('success')
 
 
 class SpreadSheet10(models.Model):
-    consumed = models.FloatField(
-        blank=True, null=True)
+    consumed = models.BooleanField(default=False)
     clr = models.FloatField(blank=True, null=True,
                             )
     spread = models.FloatField(
@@ -935,20 +946,19 @@ class SpreadSheet10(models.Model):
         blank=True, null=True)
     time_of_day = models.FloatField(
         blank=True, null=True)
-    good_bad = models.FloatField(
-        blank=True, null=True)
+    good_bad = models.BooleanField(default=False)
     date = models.DateTimeField(max_length=120, blank=True, null=True)
+    labelled = models.BooleanField(default=False)
 
     def __str__(self):
-        return str(self.clr)
+        return str(self.consumed)
 
-
-# 11-55 models
+    def get_absolute_url(self):
+        return reverse('success')
 
 
 class SpreadSheet11(models.Model):
-    consumed = models.FloatField(
-        blank=True, null=True)
+    consumed = models.BooleanField(default=False)
     clr = models.FloatField(blank=True, null=True,
                             )
     spread = models.FloatField(
@@ -1031,17 +1041,19 @@ class SpreadSheet11(models.Model):
         blank=True, null=True)
     time_of_day = models.FloatField(
         blank=True, null=True)
-    good_bad = models.FloatField(
-        blank=True, null=True)
+    good_bad = models.BooleanField(default=False)
     date = models.DateTimeField(max_length=120, blank=True, null=True)
+    labelled = models.BooleanField(default=False)
 
     def __str__(self):
-        return str(self.clr)
+        return str(self.consumed)
+
+    def get_absolute_url(self):
+        return reverse('success')
 
 
 class SpreadSheet12(models.Model):
-    consumed = models.FloatField(
-        blank=True, null=True)
+    consumed = models.BooleanField(default=False)
     clr = models.FloatField(blank=True, null=True,
                             )
     spread = models.FloatField(
@@ -1124,17 +1136,19 @@ class SpreadSheet12(models.Model):
         blank=True, null=True)
     time_of_day = models.FloatField(
         blank=True, null=True)
-    good_bad = models.FloatField(
-        blank=True, null=True)
+    good_bad = models.BooleanField(default=False)
     date = models.DateTimeField(max_length=120, blank=True, null=True)
+    labelled = models.BooleanField(default=False)
 
     def __str__(self):
-        return str(self.clr)
+        return str(self.consumed)
+
+    def get_absolute_url(self):
+        return reverse('success')
 
 
 class SpreadSheet13(models.Model):
-    consumed = models.FloatField(
-        blank=True, null=True)
+    consumed = models.BooleanField(default=False)
     clr = models.FloatField(blank=True, null=True,
                             )
     spread = models.FloatField(
@@ -1217,17 +1231,19 @@ class SpreadSheet13(models.Model):
         blank=True, null=True)
     time_of_day = models.FloatField(
         blank=True, null=True)
-    good_bad = models.FloatField(
-        blank=True, null=True)
+    good_bad = models.BooleanField(default=False)
     date = models.DateTimeField(max_length=120, blank=True, null=True)
+    labelled = models.BooleanField(default=False)
 
     def __str__(self):
-        return str(self.clr)
+        return str(self.consumed)
+
+    def get_absolute_url(self):
+        return reverse('success')
 
 
 class SpreadSheet14(models.Model):
-    consumed = models.FloatField(
-        blank=True, null=True)
+    consumed = models.BooleanField(default=False)
     clr = models.FloatField(blank=True, null=True,
                             )
     spread = models.FloatField(
@@ -1310,17 +1326,19 @@ class SpreadSheet14(models.Model):
         blank=True, null=True)
     time_of_day = models.FloatField(
         blank=True, null=True)
-    good_bad = models.FloatField(
-        blank=True, null=True)
+    good_bad = models.BooleanField(default=False)
     date = models.DateTimeField(max_length=120, blank=True, null=True)
+    labelled = models.BooleanField(default=False)
 
     def __str__(self):
-        return str(self.clr)
+        return str(self.consumed)
+
+    def get_absolute_url(self):
+        return reverse('success')
 
 
 class SpreadSheet15(models.Model):
-    consumed = models.FloatField(
-        blank=True, null=True)
+    consumed = models.BooleanField(default=False)
     clr = models.FloatField(blank=True, null=True,
                             )
     spread = models.FloatField(
@@ -1403,17 +1421,19 @@ class SpreadSheet15(models.Model):
         blank=True, null=True)
     time_of_day = models.FloatField(
         blank=True, null=True)
-    good_bad = models.FloatField(
-        blank=True, null=True)
+    good_bad = models.BooleanField(default=False)
     date = models.DateTimeField(max_length=120, blank=True, null=True)
+    labelled = models.BooleanField(default=False)
 
     def __str__(self):
-        return str(self.clr)
+        return str(self.consumed)
+
+    def get_absolute_url(self):
+        return reverse('success')
 
 
 class SpreadSheet16(models.Model):
-    consumed = models.FloatField(
-        blank=True, null=True)
+    consumed = models.BooleanField(default=False)
     clr = models.FloatField(blank=True, null=True,
                             )
     spread = models.FloatField(
@@ -1496,17 +1516,19 @@ class SpreadSheet16(models.Model):
         blank=True, null=True)
     time_of_day = models.FloatField(
         blank=True, null=True)
-    good_bad = models.FloatField(
-        blank=True, null=True)
+    good_bad = models.BooleanField(default=False)
     date = models.DateTimeField(max_length=120, blank=True, null=True)
+    labelled = models.BooleanField(default=False)
 
     def __str__(self):
-        return str(self.clr)
+        return str(self.consumed)
+
+    def get_absolute_url(self):
+        return reverse('success')
 
 
 class SpreadSheet17(models.Model):
-    consumed = models.FloatField(
-        blank=True, null=True)
+    consumed = models.BooleanField(default=False)
     clr = models.FloatField(blank=True, null=True,
                             )
     spread = models.FloatField(
@@ -1589,17 +1611,19 @@ class SpreadSheet17(models.Model):
         blank=True, null=True)
     time_of_day = models.FloatField(
         blank=True, null=True)
-    good_bad = models.FloatField(
-        blank=True, null=True)
+    good_bad = models.BooleanField(default=False)
     date = models.DateTimeField(max_length=120, blank=True, null=True)
+    labelled = models.BooleanField(default=False)
 
     def __str__(self):
-        return str(self.clr)
+        return str(self.consumed)
+
+    def get_absolute_url(self):
+        return reverse('success')
 
 
 class SpreadSheet18(models.Model):
-    consumed = models.FloatField(
-        blank=True, null=True)
+    consumed = models.BooleanField(default=False)
     clr = models.FloatField(blank=True, null=True,
                             )
     spread = models.FloatField(
@@ -1682,17 +1706,19 @@ class SpreadSheet18(models.Model):
         blank=True, null=True)
     time_of_day = models.FloatField(
         blank=True, null=True)
-    good_bad = models.FloatField(
-        blank=True, null=True)
+    good_bad = models.BooleanField(default=False)
     date = models.DateTimeField(max_length=120, blank=True, null=True)
+    labelled = models.BooleanField(default=False)
 
     def __str__(self):
-        return str(self.clr)
+        return str(self.consumed)
+
+    def get_absolute_url(self):
+        return reverse('success')
 
 
 class SpreadSheet19(models.Model):
-    consumed = models.FloatField(
-        blank=True, null=True)
+    consumed = models.BooleanField(default=False)
     clr = models.FloatField(blank=True, null=True,
                             )
     spread = models.FloatField(
@@ -1775,17 +1801,19 @@ class SpreadSheet19(models.Model):
         blank=True, null=True)
     time_of_day = models.FloatField(
         blank=True, null=True)
-    good_bad = models.FloatField(
-        blank=True, null=True)
+    good_bad = models.BooleanField(default=False)
     date = models.DateTimeField(max_length=120, blank=True, null=True)
+    labelled = models.BooleanField(default=False)
 
     def __str__(self):
-        return str(self.clr)
+        return str(self.consumed)
+
+    def get_absolute_url(self):
+        return reverse('success')
 
 
 class SpreadSheet20(models.Model):
-    consumed = models.FloatField(
-        blank=True, null=True)
+    consumed = models.BooleanField(default=False)
     clr = models.FloatField(blank=True, null=True,
                             )
     spread = models.FloatField(
@@ -1868,9 +1896,12 @@ class SpreadSheet20(models.Model):
         blank=True, null=True)
     time_of_day = models.FloatField(
         blank=True, null=True)
-    good_bad = models.FloatField(
-        blank=True, null=True)
+    good_bad = models.BooleanField(default=False)
     date = models.DateTimeField(max_length=120, blank=True, null=True)
+    labelled = models.BooleanField(default=False)
 
     def __str__(self):
-        return str(self.clr)
+        return str(self.consumed)
+
+    def get_absolute_url(self):
+        return reverse('success')
