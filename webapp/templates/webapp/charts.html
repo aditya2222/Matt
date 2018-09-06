@@ -58,9 +58,17 @@
         <div id="container5"></div>
     </div>
     <div class="row">
-        <label for="id_field">Loan ID</label>
-        <input class="form-control" id="id_field" type="" name="">
-        <button class="btn btn-primary" id="mybtn">Submit</button>
+        <div class="col-sm-4">
+                <button id="previous" class="btn btn-primary">Previous</button>
+        </div>
+        <div class="col-sm-4">
+                <label for="id_field">Loan ID</label>
+                <input class="form-control id_field" type="" name="">
+                <button id="mybtn" class="btn btn-info">Submit ID</button>
+        </div>
+        <div class="col-sm-4">
+            <button id="next" class="btn btn-primary">Next</button>
+        </div>
         
     </div>
    <!-- <div class="row jumbotron">
@@ -93,7 +101,11 @@
         path_name = window.location.pathname
         console.log(window.location.origin)
         let count = 0;
+        let new_count = 0;
         let endpoint = "";
+        let new_endpoint = "";
+        let previous_loan_id = 0;
+        let next_loan_id = 0;
         for (var i = 0; i < path_name.length; i++) {
             if (path_name[i] == '/') {
                 count += 1;
@@ -102,14 +114,35 @@
                 endpoint += path_name[i];
             }
 
-            {#console.log("Endpount is " + endpoint);#}
+            
         }
+         for (var i = 0; i < path_name.length; i++) {
+            if (path_name[i] == '/') {
+                new_count += 1;
+            }
+            if (new_count == 2) {
+                new_endpoint += path_name[i];
+            }
 
+            
+        }
+        let final_new_endpoint = new_endpoint.replace('/','')
         $("#mybtn").click(function (event) {
             event.preventDefault()
-            loan_id = $("#id_field").val()
+            loan_id = $(".id_field").val()
             window.location.href = window.location.origin + endpoint + '/' + loan_id;
-            console.log(window.location.href)
+        })
+
+            $("#previous").click(function (event) {
+            event.preventDefault()
+            previous_loan_id = parseInt(final_new_endpoint) - 1
+            window.location.href = window.location.origin + endpoint + '/' + previous_loan_id;
+        })
+
+          $("#next").click(function (event) {
+            event.preventDefault()
+            next_loan_id = parseInt(final_new_endpoint) + 1
+            window.location.href = window.location.origin + endpoint + '/' + next_loan_id;
         })
 
     });
@@ -298,7 +331,8 @@
         ]
     })
 </script>
-{#Spreedoneter scripts#}
+
+
 <script>
     Highcharts.chart('container3', {
 
