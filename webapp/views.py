@@ -191,7 +191,7 @@ class PlotLoan1(UpdateView):
         context['btc_eth_price'] = btcethlist
         context['demand'] = demandlist
         context['supply'] = supplylist
-        context['rand_rate'] = self.object.rand_rate
+        context['rand_rate'] = self.object.rand_rate*100
         context['rand_term'] = self.object.rand_term
         context['percentage_of_available_funds'] = self.object.percentage_of_available_funds*100
         print(exact_date)
