@@ -93,7 +93,7 @@ class SpreadSheet1(models.Model):
         blank=True, null=True)
     time_of_day = models.FloatField(
         blank=True, null=True)
-    good_bad = models.BooleanField(default=False)
+    good = models.BooleanField(default=False)
     date = models.DateTimeField(max_length=120, blank=True, null=True)
     labelled = models.BooleanField(default=False)
 
@@ -187,7 +187,7 @@ class SpreadSheet2(models.Model):
         blank=True, null=True)
     time_of_day = models.FloatField(
         blank=True, null=True)
-    good_bad = models.BooleanField(default=False)
+    good = models.BooleanField(default=False)
     date = models.DateTimeField(max_length=120, blank=True, null=True)
     labelled = models.BooleanField(default=False)
 
@@ -282,7 +282,7 @@ class SpreadSheet3(models.Model):
         blank=True, null=True)
     time_of_day = models.FloatField(
         blank=True, null=True)
-    good_bad = models.BooleanField(default=False)
+    good = models.BooleanField(default=False)
     date = models.DateTimeField(max_length=120, blank=True, null=True)
     labelled = models.BooleanField(default=False)
 
@@ -377,7 +377,7 @@ class SpreadSheet4(models.Model):
         blank=True, null=True)
     time_of_day = models.FloatField(
         blank=True, null=True)
-    good_bad = models.BooleanField(default=False)
+    good = models.BooleanField(default=False)
     date = models.DateTimeField(max_length=120, blank=True, null=True)
     labelled = models.BooleanField(default=False)
 
@@ -471,7 +471,7 @@ class SpreadSheet5(models.Model):
         blank=True, null=True)
     time_of_day = models.FloatField(
         blank=True, null=True)
-    good_bad = models.BooleanField(default=False)
+    good = models.BooleanField(default=False)
     date = models.DateTimeField(max_length=120, blank=True, null=True)
     labelled = models.BooleanField(default=False)
 
@@ -566,7 +566,7 @@ class SpreadSheet6(models.Model):
         blank=True, null=True)
     time_of_day = models.FloatField(
         blank=True, null=True)
-    good_bad = models.BooleanField(default=False)
+    good = models.BooleanField(default=False)
     date = models.DateTimeField(max_length=120, blank=True, null=True)
     labelled = models.BooleanField(default=False)
 
@@ -661,7 +661,7 @@ class SpreadSheet7(models.Model):
         blank=True, null=True)
     time_of_day = models.FloatField(
         blank=True, null=True)
-    good_bad = models.BooleanField(default=False)
+    good = models.BooleanField(default=False)
     date = models.DateTimeField(max_length=120, blank=True, null=True)
     labelled = models.BooleanField(default=False)
 
@@ -756,7 +756,7 @@ class SpreadSheet8(models.Model):
         blank=True, null=True)
     time_of_day = models.FloatField(
         blank=True, null=True)
-    good_bad = models.BooleanField(default=False)
+    good = models.BooleanField(default=False)
     date = models.DateTimeField(max_length=120, blank=True, null=True)
     labelled = models.BooleanField(default=False)
 
@@ -851,7 +851,7 @@ class SpreadSheet9(models.Model):
         blank=True, null=True)
     time_of_day = models.FloatField(
         blank=True, null=True)
-    good_bad = models.BooleanField(default=False)
+    good = models.BooleanField(default=False)
     date = models.DateTimeField(max_length=120, blank=True, null=True)
     labelled = models.BooleanField(default=False)
 
@@ -946,7 +946,7 @@ class SpreadSheet10(models.Model):
         blank=True, null=True)
     time_of_day = models.FloatField(
         blank=True, null=True)
-    good_bad = models.BooleanField(default=False)
+    good = models.BooleanField(default=False)
     date = models.DateTimeField(max_length=120, blank=True, null=True)
     labelled = models.BooleanField(default=False)
 
@@ -1041,7 +1041,7 @@ class SpreadSheet11(models.Model):
         blank=True, null=True)
     time_of_day = models.FloatField(
         blank=True, null=True)
-    good_bad = models.BooleanField(default=False)
+    good = models.BooleanField(default=False)
     date = models.DateTimeField(max_length=120, blank=True, null=True)
     labelled = models.BooleanField(default=False)
 
@@ -1136,7 +1136,7 @@ class SpreadSheet12(models.Model):
         blank=True, null=True)
     time_of_day = models.FloatField(
         blank=True, null=True)
-    good_bad = models.BooleanField(default=False)
+    good = models.BooleanField(default=False)
     date = models.DateTimeField(max_length=120, blank=True, null=True)
     labelled = models.BooleanField(default=False)
 
@@ -1231,7 +1231,7 @@ class SpreadSheet13(models.Model):
         blank=True, null=True)
     time_of_day = models.FloatField(
         blank=True, null=True)
-    good_bad = models.BooleanField(default=False)
+    good = models.BooleanField(default=False)
     date = models.DateTimeField(max_length=120, blank=True, null=True)
     labelled = models.BooleanField(default=False)
 
@@ -1326,7 +1326,7 @@ class SpreadSheet14(models.Model):
         blank=True, null=True)
     time_of_day = models.FloatField(
         blank=True, null=True)
-    good_bad = models.BooleanField(default=False)
+    good = models.BooleanField(default=False)
     date = models.DateTimeField(max_length=120, blank=True, null=True)
     labelled = models.BooleanField(default=False)
 
@@ -1421,7 +1421,7 @@ class SpreadSheet15(models.Model):
         blank=True, null=True)
     time_of_day = models.FloatField(
         blank=True, null=True)
-    good_bad = models.BooleanField(default=False)
+    good = models.BooleanField(default=False)
     date = models.DateTimeField(max_length=120, blank=True, null=True)
     labelled = models.BooleanField(default=False)
 
@@ -1516,7 +1516,7 @@ class SpreadSheet16(models.Model):
         blank=True, null=True)
     time_of_day = models.FloatField(
         blank=True, null=True)
-    good_bad = models.BooleanField(default=False)
+    good = models.BooleanField(default=False)
     date = models.DateTimeField(max_length=120, blank=True, null=True)
     labelled = models.BooleanField(default=False)
 
@@ -1611,7 +1611,7 @@ class SpreadSheet17(models.Model):
         blank=True, null=True)
     time_of_day = models.FloatField(
         blank=True, null=True)
-    good_bad = models.BooleanField(default=False)
+    good = models.BooleanField(default=False)
     date = models.DateTimeField(max_length=120, blank=True, null=True)
     labelled = models.BooleanField(default=False)
 
@@ -1706,7 +1706,7 @@ class SpreadSheet18(models.Model):
         blank=True, null=True)
     time_of_day = models.FloatField(
         blank=True, null=True)
-    good_bad = models.BooleanField(default=False)
+    good = models.BooleanField(default=False)
     date = models.DateTimeField(max_length=120, blank=True, null=True)
     labelled = models.BooleanField(default=False)
 
@@ -1801,7 +1801,7 @@ class SpreadSheet19(models.Model):
         blank=True, null=True)
     time_of_day = models.FloatField(
         blank=True, null=True)
-    good_bad = models.BooleanField(default=False)
+    good = models.BooleanField(default=False)
     date = models.DateTimeField(max_length=120, blank=True, null=True)
     labelled = models.BooleanField(default=False)
 
@@ -1896,7 +1896,7 @@ class SpreadSheet20(models.Model):
         blank=True, null=True)
     time_of_day = models.FloatField(
         blank=True, null=True)
-    good_bad = models.BooleanField(default=False)
+    good = models.BooleanField(default=False)
     date = models.DateTimeField(max_length=120, blank=True, null=True)
     labelled = models.BooleanField(default=False)
 
