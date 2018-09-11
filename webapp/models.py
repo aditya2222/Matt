@@ -101,7 +101,8 @@ class SpreadSheet1(models.Model):
         return str(self.consumed)
 
     def get_absolute_url(self):
-        return reverse('success')
+        return reverse('loan1', kwargs={"pk": self.pk+1})
+
 
 class SpreadSheet2(models.Model):
     consumed = models.BooleanField(default=False)
@@ -195,7 +196,7 @@ class SpreadSheet2(models.Model):
         return str(self.consumed)
 
     def get_absolute_url(self):
-        return reverse('success')
+        return reverse('loan1', kwargs={"pk": self.pk+1})
 
 
 class SpreadSheet3(models.Model):
@@ -386,6 +387,7 @@ class SpreadSheet4(models.Model):
 
     def get_absolute_url(self):
         return reverse('success')
+
 
 class SpreadSheet5(models.Model):
     consumed = models.BooleanField(default=False)
