@@ -73,7 +73,7 @@ from django.db.models import Q
 class PlotLoan1(UpdateView):
     template_name = 'webapp/charts.html'
     model = SpreadSheet1
-    fields = ['labelled','good_bad','consumed']
+    fields = ['labelled','good','consumed']
 
     def get_context_data(self, **kwargs):
         newlist = []
@@ -180,11 +180,11 @@ class PlotLoan1(UpdateView):
             context['day_of_week'] = 'Saturday'
         else:
             context['day_of_week'] = 'Sunday'
-        # logic to handle good_bad
-        if self.object.good_bad==0:
-            context['good_bad'] = 'The Loan has not been classified yet'
+        # logic to handle good
+        if self.object.good==0:
+            context['good'] = 'The Loan has not been classified yet'
         else:
-            context['good_bad'] = 'The Loan has been classified'
+            context['good'] = 'The Loan has been classified'
         context['clr'] = newlist
         context['btc_usd_price'] = btclist
         context['eth_usd_price'] = ethlist
@@ -203,7 +203,7 @@ class PlotLoan1(UpdateView):
 class PlotLoan2(UpdateView):
     template_name = 'webapp/charts.html'
     model = SpreadSheet2
-    fields = ['labelled','good_bad','consumed']
+    fields = ['labelled','good','consumed']
 
     def get_context_data(self, **kwargs):
         newlist = []
@@ -310,11 +310,11 @@ class PlotLoan2(UpdateView):
             context['day_of_week'] = 'Saturday'
         else:
             context['day_of_week'] = 'Sunday'
-        # logic to handle good_bad
-        if self.object.good_bad==0:
-            context['good_bad'] = 'The Loan has not been classified yet'
+        # logic to handle good
+        if self.object.good==0:
+            context['good'] = 'The Loan has not been classified yet'
         else:
-            context['good_bad'] = 'The Loan has been classified'
+            context['good'] = 'The Loan has been classified'
         context['clr'] = newlist
         context['btc_usd_price'] = btclist
         context['eth_usd_price'] = ethlist
@@ -331,7 +331,7 @@ class PlotLoan2(UpdateView):
 class PlotLoan3(UpdateView):
     template_name = 'webapp/charts.html'
     model = SpreadSheet3
-    fields = ['labelled','good_bad','consumed']
+    fields = ['labelled','good','consumed']
 
     def get_context_data(self, **kwargs):
         newlist = []
@@ -438,11 +438,11 @@ class PlotLoan3(UpdateView):
             context['day_of_week'] = 'Saturday'
         else:
             context['day_of_week'] = 'Sunday'
-        # logic to handle good_bad
-        if self.object.good_bad==0:
-            context['good_bad'] = 'The Loan has not been classified yet'
+        # logic to handle good
+        if self.object.good==0:
+            context['good'] = 'The Loan has not been classified yet'
         else:
-            context['good_bad'] = 'The Loan has been classified'
+            context['good'] = 'The Loan has been classified'
         context['clr'] = newlist
         context['btc_usd_price'] = btclist
         context['eth_usd_price'] = ethlist
@@ -459,7 +459,7 @@ class PlotLoan3(UpdateView):
 class PlotLoan4(UpdateView):
     template_name = 'webapp/charts.html'
     model = SpreadSheet4
-    fields = ['labelled','good_bad','consumed']
+    fields = ['labelled','good','consumed']
 
     def get_context_data(self, **kwargs):
         newlist = []
@@ -566,11 +566,11 @@ class PlotLoan4(UpdateView):
             context['day_of_week'] = 'Saturday'
         else:
             context['day_of_week'] = 'Sunday'
-        # logic to handle good_bad
-        if self.object.good_bad==0:
-            context['good_bad'] = 'The Loan has not been classified yet'
+        # logic to handle good
+        if self.object.good==0:
+            context['good'] = 'The Loan has not been classified yet'
         else:
-            context['good_bad'] = 'The Loan has been classified'
+            context['good'] = 'The Loan has been classified'
         context['clr'] = newlist
         context['btc_usd_price'] = btclist
         context['eth_usd_price'] = ethlist
@@ -588,7 +588,7 @@ class PlotLoan4(UpdateView):
 class PlotLoan5(UpdateView):
     template_name = 'webapp/charts.html'
     model = SpreadSheet5
-    fields = ['labelled','good_bad','consumed']
+    fields = ['labelled','good','consumed']
 
     def get_context_data(self, **kwargs):
         newlist = []
@@ -695,11 +695,11 @@ class PlotLoan5(UpdateView):
             context['day_of_week'] = 'Saturday'
         else:
             context['day_of_week'] = 'Sunday'
-        # logic to handle good_bad
-        if self.object.good_bad==0:
-            context['good_bad'] = 'The Loan has not been classified yet'
+        # logic to handle good
+        if self.object.good==0:
+            context['good'] = 'The Loan has not been classified yet'
         else:
-            context['good_bad'] = 'The Loan has been classified'
+            context['good'] = 'The Loan has been classified'
         context['clr'] = newlist
         context['btc_usd_price'] = btclist
         context['eth_usd_price'] = ethlist
@@ -717,7 +717,7 @@ class PlotLoan5(UpdateView):
 class PlotLoan6(UpdateView):
     template_name = 'webapp/charts.html'
     model = SpreadSheet6
-    fields = ['labelled','good_bad','consumed']
+    fields = ['labelled','good','consumed']
 
     def get_context_data(self, **kwargs):
         newlist = []
@@ -824,11 +824,11 @@ class PlotLoan6(UpdateView):
             context['day_of_week'] = 'Saturday'
         else:
             context['day_of_week'] = 'Sunday'
-        # logic to handle good_bad
-        if self.object.good_bad==0:
-            context['good_bad'] = 'The Loan has not been classified yet'
+        # logic to handle good
+        if self.object.good==0:
+            context['good'] = 'The Loan has not been classified yet'
         else:
-            context['good_bad'] = 'The Loan has been classified'
+            context['good'] = 'The Loan has been classified'
         context['clr'] = newlist
         context['btc_usd_price'] = btclist
         context['eth_usd_price'] = ethlist
@@ -846,7 +846,7 @@ class PlotLoan6(UpdateView):
 class PlotLoan7(UpdateView):
     template_name = 'webapp/charts.html'
     model = SpreadSheet7
-    fields = ['labelled','good_bad','consumed']
+    fields = ['labelled','good','consumed']
 
     def get_context_data(self, **kwargs):
         newlist = []
@@ -953,11 +953,11 @@ class PlotLoan7(UpdateView):
             context['day_of_week'] = 'Saturday'
         else:
             context['day_of_week'] = 'Sunday'
-        # logic to handle good_bad
-        if self.object.good_bad==0:
-            context['good_bad'] = 'The Loan has not been classified yet'
+        # logic to handle good
+        if self.object.good==0:
+            context['good'] = 'The Loan has not been classified yet'
         else:
-            context['good_bad'] = 'The Loan has been classified'
+            context['good'] = 'The Loan has been classified'
         context['clr'] = newlist
         context['btc_usd_price'] = btclist
         context['eth_usd_price'] = ethlist
@@ -975,7 +975,7 @@ class PlotLoan7(UpdateView):
 class PlotLoan8(UpdateView):
     template_name = 'webapp/charts.html'
     model = SpreadSheet8
-    fields = ['labelled','good_bad','consumed']
+    fields = ['labelled','good','consumed']
 
     def get_context_data(self, **kwargs):
         newlist = []
@@ -1082,11 +1082,11 @@ class PlotLoan8(UpdateView):
             context['day_of_week'] = 'Saturday'
         else:
             context['day_of_week'] = 'Sunday'
-        # logic to handle good_bad
-        if self.object.good_bad==0:
-            context['good_bad'] = 'The Loan has not been classified yet'
+        # logic to handle good
+        if self.object.good==0:
+            context['good'] = 'The Loan has not been classified yet'
         else:
-            context['good_bad'] = 'The Loan has been classified'
+            context['good'] = 'The Loan has been classified'
         context['clr'] = newlist
         context['btc_usd_price'] = btclist
         context['eth_usd_price'] = ethlist
@@ -1104,7 +1104,7 @@ class PlotLoan8(UpdateView):
 class PlotLoan9(UpdateView):
     template_name = 'webapp/charts.html'
     model = SpreadSheet9
-    fields = ['labelled','good_bad','consumed']
+    fields = ['labelled','good','consumed']
 
     def get_context_data(self, **kwargs):
         newlist = []
@@ -1211,11 +1211,11 @@ class PlotLoan9(UpdateView):
             context['day_of_week'] = 'Saturday'
         else:
             context['day_of_week'] = 'Sunday'
-        # logic to handle good_bad
-        if self.object.good_bad==0:
-            context['good_bad'] = 'The Loan has not been classified yet'
+        # logic to handle good
+        if self.object.good==0:
+            context['good'] = 'The Loan has not been classified yet'
         else:
-            context['good_bad'] = 'The Loan has been classified'
+            context['good'] = 'The Loan has been classified'
         context['clr'] = newlist
         context['btc_usd_price'] = btclist
         context['eth_usd_price'] = ethlist
